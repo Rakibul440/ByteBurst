@@ -1,4 +1,5 @@
-// signupUser
+// Send otp
+
 
 
 // loginUser
