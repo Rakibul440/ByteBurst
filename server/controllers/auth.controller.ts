@@ -4,7 +4,7 @@ import { prisma } from "../lib/prisma";
 
 import { generateOTP } from "../utils/otp.util";
 import { sendmail } from "../services/mail.service";
-import { hashCredential } from "../utils/hash.util";
+import { compareCredential, hashCredential } from "../utils/hash.util";
 import { generateAccessToken, generateRefreshToken } from "../utils/token.util";
 
 // signup
@@ -114,12 +114,81 @@ export const signup = async (req: Request, res: Response) => {
 }
 
 // login
+export const login = async (req: Request, res: Response) => {
+    try {
+        const { email, password } = req.body;
+
+        const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/;
+        const passwordLength = password.length > 4;
+
+        // check all field
+        if (!email.trim() || !password.trim()) return res.status(StatusCodes.NOT_FOUND).json({ message: "Enter all the fields" })
+
+        // check password length
+        if (!passwordLength) return res.status(StatusCodes.NOT_FOUND).json({ message: ".Password is too small" })
+
+        // check email regex
+        if (!emailRegex.test(email)) return res.status(StatusCodes.NOT_FOUND).json({ message: "Enter correct email" })
+
+        // find user exist or not
+        const user = await prisma.user.findUnique({
+            where: { email: email }
+        })
+
+
+        if (!user) return res.status(StatusCodes.NOT_FOUND).json({
+            message: "user not found"
+        })
+
+        // compare password
+        const isPasswordCorrect = await compareCredential(user.password, password)
+
+        // save token at Session
+        const forwarded = req.headers["x-forwarded-for"]
+        const ipAddess = Array.isArray(forwarded) ? forwarded[0] : forwarded || req.socket.remoteAddress;
+        const userAgent = req.headers["user-agent"]
+        const accessToken = generateAccessToken({
+            name: user.name,
+            email: user.email,
+            roll: user.roll
+        })
+
+        const refreshToken = generateRefreshToken({
+            email: user.email
+        })
+
+        await prisma.session.create({
+            data: {
+                userId: user.id,
+                refreshToken: refreshToken,
+                ipAddress: ipAddess,
+                userAgent: userAgent
+            }
+        })
+
+
+        const options = {
+            httpOnly: true,
+            secure: true
+        }
+
+        return res
+            .status(StatusCodes.CREATED)
+            .cookie("refreshToken", refreshToken, options)
+            .cookie("accessToken", accessToken, options)
+            .cookie("username", user.username, options)
+            .json({
+                message: "Login Successfully"
+            })
+
+    } catch (error: any) {
+        console.log(error.code || error.message)
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ message: error.message })
+    }
+}
+
 
 // logout
 
 // verifyOtp
 
-const options = {
-    httpOnly: true,
-    secure: true,
-};
