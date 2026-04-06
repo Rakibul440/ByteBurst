@@ -70,7 +70,8 @@ export const signup = async (req: Request, res: Response) => {
         })
 
         // save token at Session
-        const ipAddess = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
+        const forwarded = req.headers["x-forwarded-for"]
+        const ipAddess = Array.isArray(forwarded) ? forwarded[0] : forwarded || req.socket.remoteAddress;
         const userAgent = req.headers["user-agent"]
         const accessToken = generateAccessToken({
             name: newUser.name,
@@ -80,6 +81,15 @@ export const signup = async (req: Request, res: Response) => {
 
         const refreshToken = generateRefreshToken({
             email: newUser.email
+        })
+
+        await prisma.session.create({
+            data: {
+                userId: newUser.id,
+                refreshToken: refreshToken,
+                ipAddress: ipAddess,
+                userAgent: userAgent
+            }
         })
 
 
