@@ -104,7 +104,9 @@ export const signup = async (req: Request, res: Response) => {
             .cookie("accessToken", accessToken, options)
             .cookie("username", newUser.username, options)
             .json({
-                message: "Registered Successfully"
+                message: "Registered Successfully",
+                newUser
+
             })
 
     } catch (error: any) {
