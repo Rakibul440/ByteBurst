@@ -1,27 +1,14 @@
-:root {
-  --black: #020408;
-  --deep: #050d1a;
-  /* --cyan: #00f5ff; */
-  --cyan: red;
-  --electric: #0af;
-  --neon-green: #39ff14;
-  --gold: #ffd700;
-  --magenta: #ff0080;
-  --text: #c8dce8;
-  --dim: #5a7a8a;
-}
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Bebas+Neue&family=Rajdhani&display=swap');
 
-html {
-  scroll-behavior: smooth;
-}
+@import "tailwindcss";
 
 body {
-  background: var(--black);
-  color: var(--text);
   font-family: 'Rajdhani', sans-serif;
-  overflow-x: hidden;
-  cursor: none;
+  background: black;
+  color: #c8dce8;
 }
+
 
 *,
 *::before,
@@ -29,69 +16,4 @@ body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-
-/* CUSTOM CURSOR */
-.cursor {
-  position: fixed;
-  width: 12px;
-  height: 12px;
-  background: var(--cyan);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: transform 0.1s, background 0.2s;
-  box-shadow: 0 0 12px var(--cyan), 0 0 24px var(--cyan);
-}
-
-.cursor-ring {
-  position: fixed;
-  width: 36px;
-  height: 36px;
-  border: 1px solid var(--cyan);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%, -50%);
-  transition: transform 0.15s ease, width 0.2s, height 0.2s, opacity 0.2s;
-  opacity: 0.5;
-}
-
-
-
-/* NOISE OVERLAY */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 9000;
-  opacity: 0.35;
-}
-
-/* SCANLINES */
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background: repeating-linear-gradient(0deg,
-      transparent,
-      transparent 2px,
-      rgba(83, 83, 82, 0.015) 2px,
-      rgba(123, 123, 122, 0.015) 4px);
-  pointer-events: none;
-  z-index: 8999;
-}
-
-/* GRID BG */
-.grid-bg {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(0, 245, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 245, 255, 0.04) 1px, transparent 1px);
-  background-size: 60px 60px;
-  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
 }

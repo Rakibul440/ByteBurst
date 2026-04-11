@@ -1,0 +1,395 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap');
+
+
+
+/* body {
+    background: #0A0806;
+} */
+
+.dune-root {
+    min-height: 100vh;
+    background: #0A0806;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Sand particle background */
+.dune-root::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(200, 137, 26, 0.12) 0%, transparent 60%),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Dune horizon glow */
+.dune-root::after {
+    content: '';
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 35vh;
+    background: linear-gradient(to top, rgba(200, 137, 26, 0.06) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.dune-card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 440px;
+    background: #12100A;
+    border: 1px solid #3D2E1A;
+    padding: 3rem 2.5rem;
+    animation: duneRise 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.dune-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #C8891A, transparent);
+}
+
+.dune-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 20%;
+    right: 20%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #7A6548, transparent);
+}
+
+/* Corner ornaments */
+.corner {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-color: #C8891A;
+    border-style: solid;
+    opacity: 0.7;
+}
+
+.corner-tl {
+    top: -1px;
+    left: -1px;
+    border-width: 2px 0 0 2px;
+}
+
+.corner-tr {
+    top: -1px;
+    right: -1px;
+    border-width: 2px 2px 0 0;
+}
+
+.corner-bl {
+    bottom: -1px;
+    left: -1px;
+    border-width: 0 0 2px 2px;
+}
+
+.corner-br {
+    bottom: -1px;
+    right: -1px;
+    border-width: 0 2px 2px 0;
+}
+
+.dune-sigil {
+    text-align: center;
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+    color: #C8891A;
+    opacity: 0.6;
+    letter-spacing: 0.3em;
+}
+
+.dune-heading {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #D4B896;
+    text-align: center;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+    line-height: 1.1;
+}
+
+.dune-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: #7A6548;
+    text-align: center;
+    letter-spacing: 0.05em;
+    margin-bottom: 2.2rem;
+}
+
+.dune-divider {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 1.8rem 0;
+}
+
+.dune-divider-line {
+    flex: 1;
+    height: 1px;
+    background: #3D2E1A;
+}
+
+.dune-divider-diamond {
+    width: 6px;
+    height: 6px;
+    background: #C8891A;
+    transform: rotate(45deg);
+    opacity: 0.6;
+}
+
+.field-group {
+    margin-bottom: 1.4rem;
+}
+
+.field-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #C8891A;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.field-wrap {
+    position: relative;
+}
+
+.field-input {
+    width: 100%;
+    background: #0A0806;
+    border: 1px solid #3D2E1A;
+    color: #D4B896;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+    outline: none;
+    transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
+    letter-spacing: 0.04em;
+}
+
+.field-input::placeholder {
+    color: #3D2E1A;
+}
+
+.field-input:focus {
+    border-color: #C8891A;
+    background: #0E0C08;
+    box-shadow: 0 0 20px rgba(200, 137, 26, 0.08), inset 0 0 10px rgba(200, 137, 26, 0.03);
+}
+
+.field-underline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    width: 0;
+    background: linear-gradient(to right, #C8891A, #E8A020);
+    transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.field-wrap:focus-within .field-underline {
+    width: 100%;
+}
+
+.eye-btn {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #7A6548;
+    cursor: pointer;
+    padding: 0.25rem;
+    transition: color 0.2s;
+}
+
+.eye-btn:hover {
+    color: #C8891A;
+}
+
+.dune-btn {
+    width: 100%;
+    padding: 0.9rem;
+    background: transparent;
+    border: 1px solid #C8891A;
+    color: #C8891A;
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.35s;
+    position: relative;
+    overflow: hidden;
+    margin-top: 0.5rem;
+}
+
+.dune-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(200, 137, 26, 0.15), rgba(232, 160, 32, 0.05));
+    opacity: 0;
+    transition: opacity 0.35s;
+}
+
+.dune-btn:hover {
+    color: #E8A020;
+    border-color: #E8A020;
+    box-shadow: 0 0 30px rgba(200, 137, 26, 0.2), inset 0 0 20px rgba(200, 137, 26, 0.05);
+}
+
+.dune-btn:hover::before {
+    opacity: 1;
+}
+
+.dune-btn.success {
+    color: #E8A020;
+    border-color: #E8A020;
+    background: rgba(200, 137, 26, 0.1);
+}
+
+.dune-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem;
+    color: #7A6548;
+    letter-spacing: 0.04em;
+}
+
+.dune-link {
+    color: #C8891A;
+    cursor: pointer;
+    font-style: italic;
+    text-decoration: none;
+    transition: color 0.2s;
+    border-bottom: 1px solid transparent;
+}
+
+.dune-link:hover {
+    color: #E8A020;
+    border-bottom-color: rgba(232, 160, 32, 0.4);
+}
+
+.dune-forgot {
+    text-align: right;
+    margin-top: -0.8rem;
+    margin-bottom: 1rem;
+}
+
+.dune-forgot a {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.78rem;
+    color: #7A6548;
+    cursor: pointer;
+    transition: color 0.2s;
+    text-decoration: none;
+}
+
+.dune-forgot a:hover {
+    color: #C8891A;
+}
+
+.page-toggle {
+    display: flex;
+    gap: 0;
+    margin-bottom: 2rem;
+    border: 1px solid #3D2E1A;
+}
+
+.toggle-btn {
+    flex: 1;
+    padding: 0.6rem;
+    background: transparent;
+    border: none;
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: #7A6548;
+    transition: all 0.3s;
+}
+
+.toggle-btn.active {
+    background: rgba(200, 137, 26, 0.1);
+    color: #C8891A;
+    border-bottom: 1px solid #C8891A;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #0A0806 inset !important;
+    -webkit-text-fill-color: #D4B896 !important;
+}
+
+@keyframes duneRise {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes fadeField {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.fields-enter>* {
+    animation: fadeField 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.fields-enter>*:nth-child(1) {
+    animation-delay: 0.05s;
+}
+
+.fields-enter>*:nth-child(2) {
+    animation-delay: 0.12s;
+}
+
+.fields-enter>*:nth-child(3) {
+    animation-delay: 0.19s;
+}
+
+.fields-enter>*:nth-child(4) {
+    animation-delay: 0.26s;
+}

@@ -1,0 +1,252 @@
+/* ════════════════════════════════════
+   PROFILE CARD
+════════════════════════════════════ */
+.tm-card {
+    position: relative;
+    background: #0E0C08;
+    border: 1px solid #3D2E1A;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform .4s cubic-bezier(.22, 1, .36, 1),
+        border-color .4s, box-shadow .4s;
+}
+
+.tm-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(200, 137, 26, .45);
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, .5),
+        0 0 0 1px rgba(200, 137, 26, .1),
+        0 0 40px rgba(200, 137, 26, .07);
+}
+
+/* Top gold line that grows on hover */
+.tm-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #C8891A, transparent);
+    opacity: 0;
+    transition: opacity .4s;
+}
+
+.tm-card:hover::before {
+    opacity: 1;
+}
+
+/* Bottom fade */
+.tm-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #3D2E1A, transparent);
+}
+
+/* ── Image wrapper ── */
+.tm-card-img-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3/3.4;
+    overflow: hidden;
+    background: #0A0804;
+    /* filter: grayscale(100%); */
+}
+
+.tm-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    filter: grayscale(100%);
+    transition: filter .5s, transform .6s cubic-bezier(.22, 1, .36, 1);
+}
+
+.tm-card:hover .tm-card-img {
+    /* filter: grayscale(25%) sepia(15%); */
+    transform: scale(1.05);
+}
+
+/* Sigil badge top-right */
+.tm-card-sigil {
+    position: absolute;
+    top: .9rem;
+    right: .9rem;
+    width: 32px;
+    height: 32px;
+    background: rgba(7, 6, 4, .8);
+    border: 1px solid #3D2E1A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .9rem;
+    color: #C8891A;
+    transform: rotate(0deg);
+    transition: border-color .3s, color .3s, transform .5s;
+}
+
+.tm-card:hover .tm-card-sigil {
+    border-color: #C8891A;
+    color: #E8A020;
+    transform: rotate(180deg);
+}
+
+/* Image overlay on hover */
+.tm-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,
+            transparent 30%,
+            rgba(7, 6, 4, .6) 70%,
+            rgba(7, 6, 4, .9) 100%);
+    opacity: 0;
+    transition: opacity .4s;
+}
+
+.tm-card:hover .tm-card-overlay {
+    opacity: 1;
+}
+
+/* Quote on image (hover reveal) */
+.tm-card-img-quote {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: .82rem;
+    line-height: 1.5;
+    color: rgba(212, 184, 150, .85);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity .4s .05s, transform .4s .05s;
+}
+
+.tm-card:hover .tm-card-img-quote {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── Card body ── */
+.tm-card-body {
+    padding: 1.4rem 1.5rem 1.6rem;
+    position: relative;
+}
+
+/* Number watermark */
+.tm-card-num {
+    position: absolute;
+    top: -1.4rem;
+    right: 1.2rem;
+    font-family: 'Cinzel', serif;
+    font-size: 3rem;
+    font-weight: 900;
+    color: rgba(61, 46, 26, .2);
+    line-height: 1;
+    pointer-events: none;
+    transition: color .4s;
+}
+
+.tm-card:hover .tm-card-num {
+    color: rgba(200, 137, 26, .12);
+}
+
+.tm-card-name {
+    font-family: 'Cinzel', serif;
+    font-size: .9rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #D4B896;
+    margin-bottom: .3rem;
+    transition: color .3s;
+}
+
+.tm-card:hover .tm-card-name {
+    color: #E8A020;
+}
+
+.tm-card-role {
+    font-family: 'Cinzel', serif;
+    font-size: .52rem;
+    font-weight: 600;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: #7A6548;
+    margin-bottom: .2rem;
+}
+
+.tm-card-dune {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: .82rem;
+    letter-spacing: .06em;
+    color: #C8891A;
+    margin-bottom: 1.1rem;
+    display: block;
+    transition: color .3s;
+}
+
+.tm-card:hover .tm-card-dune {
+    color: #E8A020;
+}
+
+/* Separator */
+.tm-card-sep {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    margin-bottom: 1.1rem;
+}
+
+.tm-card-sep-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, #3D2E1A, transparent);
+}
+
+.tm-card-sep-dot {
+    width: 4px;
+    height: 4px;
+    background: #3D2E1A;
+    transform: rotate(45deg);
+    transition: background .3s;
+}
+
+.tm-card:hover .tm-card-sep-dot {
+    background: #C8891A;
+}
+
+/* Socials */
+.tm-card-socials {
+    display: flex;
+    gap: .6rem;
+}
+
+.tm-social-btn {
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    border: 1px solid #3D2E1A;
+    color: #7A6548;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color .3s, border-color .3s, background .3s, transform .25s;
+}
+
+.tm-social-btn:hover {
+    color: #C8891A;
+    border-color: #C8891A;
+    background: rgba(200, 137, 26, .08);
+    transform: translateY(-2px);
+}

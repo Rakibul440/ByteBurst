@@ -1,5 +1,6 @@
 import { transporter } from "../config/mail.config";
 import { otpTemplate } from "../templates/otp.template";
+import { otpTemplate_2 } from "../templates/otp.template-2";
 
 export const sendmail = async (code: string, email: string) => {
     try {
@@ -8,7 +9,7 @@ export const sendmail = async (code: string, email: string) => {
             to: email,
             subject: "Verify Email",
             text: code,
-            html: otpTemplate(code)
+            html: otpTemplate_2(code)
         })
     } catch (error: any) {
         console.error("Error while sending mail:", error);

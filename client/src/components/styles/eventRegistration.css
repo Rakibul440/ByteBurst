@@ -1,0 +1,760 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap');
+
+.rg-root {
+    background: #070604;
+    color: #D4B896;
+    font-family: 'Cormorant Garamond', serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    padding-top: 72px;
+}
+
+/* ════════════════════════════════════
+   HERO BANNER
+════════════════════════════════════ */
+.rg-hero {
+    position: relative;
+    padding: 4.5rem 2rem 3.5rem;
+    text-align: center;
+    overflow: hidden;
+}
+
+.rg-hero-glow {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 700px;
+    height: 420px;
+    background: radial-gradient(ellipse, rgba(200, 137, 26, .1) 0%, transparent 65%);
+    pointer-events: none;
+}
+
+.rg-hero-grain {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.022'/%3E%3C/svg%3E");
+}
+
+.rg-hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 8%;
+    right: 8%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #3D2E1A, transparent);
+}
+
+.rg-hero-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: .53rem;
+    letter-spacing: .38em;
+    text-transform: uppercase;
+    color: #7A6548;
+    margin-bottom: .9rem;
+    display: block;
+    animation: rg-rise .9s .05s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+.rg-hero-title {
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    font-size: clamp(2.2rem, 7vw, 4.8rem);
+    line-height: 1;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: transparent;
+    background: linear-gradient(150deg, #F0D080 0%, #E8A020 30%, #C8891A 60%, #F0C840 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    filter: drop-shadow(0 0 35px rgba(200, 137, 26, .28));
+    animation: rg-rise .9s .15s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+.rg-hero-dune {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(.9rem, 2vw, 1.15rem);
+    letter-spacing: .12em;
+    color: #C8891A;
+    margin-top: .5rem;
+    margin-bottom: .4rem;
+    animation: rg-rise .9s .25s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+.rg-hero-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(.85rem, 1.6vw, 1rem);
+    color: rgba(212, 184, 150, .45);
+    letter-spacing: .08em;
+    margin-bottom: 1.6rem;
+    animation: rg-rise .9s .32s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+.rg-hero-orn {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    max-width: 280px;
+    margin: 0 auto;
+    animation: rg-rise .9s .38s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+.rg-orn-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #3D2E1A);
+}
+
+.rg-orn-line.r {
+    background: linear-gradient(to left, transparent, #3D2E1A);
+}
+
+.rg-orn-gem {
+    width: 6px;
+    height: 6px;
+    background: #C8891A;
+    transform: rotate(45deg);
+    box-shadow: 0 0 8px rgba(200, 137, 26, .4);
+    flex-shrink: 0;
+}
+
+@keyframes rg-rise {
+    from {
+        opacity: 0;
+        transform: translateY(28px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ════════════════════════════════════
+   MAIN BODY — two-column layout
+════════════════════════════════════ */
+.rg-body {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 4rem 2rem 6rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+/* ════════════════════════════════════
+   LEFT — REGISTRATION FORM
+════════════════════════════════════ */
+.rg-form-panel {
+    position: relative;
+    background: #0E0C08;
+    border: 1px solid #3D2E1A;
+    padding: 2.8rem 2.5rem;
+    animation: rg-rise .9s .2s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+/* Top gold accent */
+.rg-form-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #C8891A, transparent);
+}
+
+/* Corner ornaments */
+.rg-corner {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-color: #C8891A;
+    border-style: solid;
+    opacity: .5;
+}
+
+.rg-c-tl {
+    top: -1px;
+    left: -1px;
+    border-width: 1.5px 0 0 1.5px;
+}
+
+.rg-c-tr {
+    top: -1px;
+    right: -1px;
+    border-width: 1.5px 1.5px 0 0;
+}
+
+.rg-c-bl {
+    bottom: -1px;
+    left: -1px;
+    border-width: 0 0 1.5px 1.5px;
+}
+
+.rg-c-br {
+    bottom: -1px;
+    right: -1px;
+    border-width: 0 1.5px 1.5px 0;
+}
+
+.rg-form-header {
+    margin-bottom: 2rem;
+}
+
+.rg-form-sigil {
+    font-family: 'Cinzel', serif;
+    font-size: .55rem;
+    letter-spacing: .35em;
+    color: #7A6548;
+    display: block;
+    margin-bottom: .7rem;
+}
+
+.rg-form-title {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #D4B896;
+    margin-bottom: .3rem;
+}
+
+.rg-form-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: .9rem;
+    color: #7A6548;
+    letter-spacing: .06em;
+}
+
+/* ── Field group ── */
+.rg-field {
+    margin-bottom: 1.4rem;
+    position: relative;
+}
+
+.rg-label {
+    font-family: 'Cinzel', serif;
+    font-size: .5rem;
+    font-weight: 600;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: #C8891A;
+    display: block;
+    margin-bottom: .5rem;
+}
+
+.rg-input-wrap {
+    position: relative;
+}
+
+.rg-input,
+.rg-select {
+    width: 100%;
+    background: #070604;
+    border: 1px solid #3D2E1A;
+    color: #D4B896;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    padding: .72rem 1rem;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    transition: border-color .3s, background .3s, box-shadow .3s;
+    letter-spacing: .04em;
+    border-radius: 0;
+}
+
+.rg-input::placeholder {
+    color: #3D2E1A;
+}
+
+.rg-input:focus,
+.rg-select:focus {
+    border-color: #C8891A;
+    background: #0A0804;
+    box-shadow: 0 0 18px rgba(200, 137, 26, .08), inset 0 0 10px rgba(200, 137, 26, .03);
+}
+
+/* animated underline */
+.rg-field-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    width: 0;
+    background: linear-gradient(to right, #C8891A, #E8A020);
+    transition: width .4s cubic-bezier(.22, 1, .36, 1);
+    pointer-events: none;
+}
+
+.rg-input-wrap:focus-within .rg-field-bar {
+    width: 100%;
+}
+
+/* Select arrow */
+.rg-select-arrow {
+    position: absolute;
+    right: .9rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #7A6548;
+    font-size: .65rem;
+    pointer-events: none;
+    transition: color .3s;
+}
+
+.rg-input-wrap:focus-within .rg-select-arrow {
+    color: #C8891A;
+}
+
+/* Two-col row */
+.rg-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+/* ── Submit button ── */
+.rg-submit {
+    width: 100%;
+    margin-top: 2rem;
+    font-family: 'Cinzel', serif;
+    font-size: .65rem;
+    font-weight: 700;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: #070604;
+    background: #C8891A;
+    border: 1px solid #C8891A;
+    padding: 1rem;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: background .35s, box-shadow .35s;
+}
+
+.rg-submit::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, .1), transparent);
+    opacity: 0;
+    transition: opacity .3s;
+}
+
+.rg-submit:hover {
+    background: #E8A020;
+    box-shadow: 0 0 32px rgba(200, 137, 26, .35);
+}
+
+.rg-submit:hover::before {
+    opacity: 1;
+}
+
+.rg-submit:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+}
+
+/* ── Success state ── */
+.rg-success {
+    text-align: center;
+    padding: 2.5rem 1rem;
+    animation: rg-rise .6s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+.rg-success-sigil {
+    font-size: 2rem;
+    color: #C8891A;
+    display: block;
+    margin-bottom: 1rem;
+    animation: rg-spin 1.5s ease-out both;
+}
+
+@keyframes rg-spin {
+    from {
+        transform: rotate(-180deg) scale(0);
+        opacity: 0;
+    }
+
+    to {
+        transform: rotate(0deg) scale(1);
+        opacity: 1;
+    }
+}
+
+.rg-success-title {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #E8A020;
+    margin-bottom: .6rem;
+}
+
+.rg-success-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: rgba(212, 184, 150, .6);
+    line-height: 1.7;
+    max-width: 320px;
+    margin: 0 auto 1.5rem;
+}
+
+.rg-success-attr {
+    font-family: 'Cinzel', serif;
+    font-size: .48rem;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: #3D2E1A;
+}
+
+.rg-success-line {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #C8891A, transparent);
+    margin: 1.2rem auto;
+}
+
+/* ── Validation error ── */
+.rg-error {
+    font-family: 'Cinzel', serif;
+    font-size: .48rem;
+    letter-spacing: .15em;
+    color: #BA5050;
+    margin-top: .35rem;
+    display: block;
+}
+
+/* ════════════════════════════════════
+   RIGHT — RULEBOOK
+════════════════════════════════════ */
+.rg-rules-panel {
+    position: sticky;
+    top: 90px;
+    animation: rg-rise .9s .35s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+.rg-rules-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid #3D2E1A;
+    position: relative;
+}
+
+.rg-rules-header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 40%;
+    height: 1px;
+    background: var(--gold, #C8891A);
+}
+
+.rg-rules-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: .52rem;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: #7A6548;
+    margin-bottom: .6rem;
+    display: block;
+}
+
+.rg-rules-title {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #D4B896;
+    margin-bottom: .3rem;
+}
+
+.rg-rules-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: .9rem;
+    color: #7A6548;
+    letter-spacing: .06em;
+}
+
+/* Poster thumbnail */
+.rg-poster-thumb {
+    width: 100%;
+    aspect-ratio: 5/3;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    margin-bottom: 1.8rem;
+    filter: grayscale(25%) sepia(18%);
+    border: 1px solid #3D2E1A;
+    transition: filter .4s;
+}
+
+.rg-poster-thumb:hover {
+    filter: grayscale(0%) sepia(8%);
+}
+
+/* Rules list */
+.rg-rules-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 2rem;
+}
+
+.rg-rule-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid rgba(61, 46, 26, .3);
+    position: relative;
+    overflow: hidden;
+    transition: padding-left .3s;
+}
+
+.rg-rule-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    background: linear-gradient(to right, rgba(200, 137, 26, .05), transparent);
+    transition: width .35s;
+}
+
+.rg-rule-item:hover {
+    padding-left: .5rem;
+}
+
+.rg-rule-item:hover::before {
+    width: 100%;
+}
+
+.rg-rule-num {
+    font-family: 'Cinzel', serif;
+    font-size: .48rem;
+    letter-spacing: .15em;
+    color: #3D2E1A;
+    flex-shrink: 0;
+    padding-top: .2rem;
+    transition: color .3s;
+    min-width: 2rem;
+}
+
+.rg-rule-item:hover .rg-rule-num {
+    color: #C8891A;
+}
+
+.rg-rule-body {
+    flex: 1;
+}
+
+.rg-rule-title {
+    font-family: 'Cinzel', serif;
+    font-size: .62rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: #D4B896;
+    margin-bottom: .25rem;
+    display: block;
+    transition: color .3s;
+}
+
+.rg-rule-item:hover .rg-rule-title {
+    color: #E8A020;
+}
+
+.rg-rule-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: .9rem;
+    line-height: 1.65;
+    color: rgba(212, 184, 150, .5);
+}
+
+.rg-rule-gem {
+    flex-shrink: 0;
+    width: 5px;
+    height: 5px;
+    border: 1px solid #3D2E1A;
+    transform: rotate(45deg);
+    margin-top: .35rem;
+    transition: background .3s, border-color .3s;
+}
+
+.rg-rule-item:hover .rg-rule-gem {
+    background: #C8891A;
+    border-color: #C8891A;
+    box-shadow: 0 0 6px rgba(200, 137, 26, .4);
+}
+
+/* Quote on rulebook side */
+.rg-rules-quote {
+    background: rgba(14, 12, 8, .6);
+    border: 1px solid #3D2E1A;
+    border-left: 2px solid rgba(200, 137, 26, .4);
+    padding: 1.4rem 1.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.rg-rules-quote::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, rgba(200, 137, 26, .3), transparent);
+}
+
+.rg-rq-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: .95rem;
+    line-height: 1.7;
+    color: rgba(200, 137, 26, .55);
+    margin-bottom: .5rem;
+}
+
+.rg-rq-attr {
+    font-family: 'Cinzel', serif;
+    font-size: .47rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: #3D2E1A;
+    display: block;
+}
+
+/* Contact strip */
+.rg-contact-strip {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: .9rem 1.2rem;
+    background: rgba(14, 12, 8, .5);
+    border: 1px solid rgba(61, 46, 26, .4);
+}
+
+.rg-contact-gem {
+    width: 8px;
+    height: 8px;
+    background: #C8891A;
+    transform: rotate(45deg);
+    flex-shrink: 0;
+    box-shadow: 0 0 8px rgba(200, 137, 26, .4);
+}
+
+.rg-contact-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: .88rem;
+    color: #7A6548;
+}
+
+.rg-contact-text strong {
+    font-style: normal;
+    color: #C8891A;
+    font-weight: 400;
+}
+
+/* ════════════════════════════════════
+   BOTTOM QUOTE BAND
+════════════════════════════════════ */
+.rg-quote-band {
+    padding: 4rem 2rem;
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+}
+
+.rg-quote-band::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 8%;
+    right: 8%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #3D2E1A, transparent);
+}
+
+.rg-qb-sigil {
+    font-family: 'Cinzel', serif;
+    font-size: .7rem;
+    letter-spacing: .45em;
+    color: #3D2E1A;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.rg-qb-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 2.4vw, 1.35rem);
+    line-height: 1.75;
+    color: rgba(212, 184, 150, .5);
+    margin-bottom: .7rem;
+    letter-spacing: .03em;
+}
+
+.rg-qb-attr {
+    font-family: 'Cinzel', serif;
+    font-size: .5rem;
+    letter-spacing: .26em;
+    text-transform: uppercase;
+    color: #3D2E1A;
+}
+
+/* ════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════ */
+@media (max-width:960px) {
+    .rg-body {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .rg-rules-panel {
+        position: static;
+    }
+
+    .rg-poster-thumb {
+        aspect-ratio: 16/7;
+    }
+}
+
+@media (max-width:560px) {
+    .rg-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .rg-form-panel {
+        padding: 2rem 1.5rem;
+    }
+
+    .rg-body {
+        padding: 3rem 1.2rem 5rem;
+    }
+}
+
+/* Autofill override */
+.rg-input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #070604 inset !important;
+    -webkit-text-fill-color: #D4B896 !important;
+}

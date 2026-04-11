@@ -1,0 +1,344 @@
+export const otpTemplate_2 = (otp: string) => {
+    const digits = otp.split("")
+
+    return `
+    <!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml"
+    xmlns:o="urn:schemas-microsoft-com:office:office">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="x-apple-disable-message-reformatting">
+    <meta name="format-detection" content="telephone=no,address=no,email=no,date=no,url=no">
+    <title>ByteBurst - A Tech Saga Chapter III</title>
+
+
+    <style>
+        /* ── Google Fonts (supported in Gmail/Apple Mail) ── */
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
+
+        /* ── Reset ── */
+        * {
+            box-sizing: border-box;
+        }
+
+        body,
+        table,
+        td,
+        a {
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+
+        table,
+        td {
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+        }
+
+        img {
+            -ms-interpolation-mode: bicubic;
+            border: 0;
+            outline: none;
+            text-decoration: none;
+        }
+
+        body {
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100% !important;
+        }
+
+        /* ── Preview selector ── */
+        .template-nav {
+            display: flex;
+            gap: 12px;
+            padding: 16px 24px;
+            background: #111;
+            flex-wrap: wrap;
+            font-family: 'Cinzel', serif;
+        }
+
+        .template-nav button {
+            font-family: 'Cinzel', serif;
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 8px 18px;
+            cursor: pointer;
+            background: transparent;
+            border: 1px solid #3D2E1A;
+            color: #7A6548;
+            transition: all .25s;
+        }
+
+        .template-nav button:hover {
+            color: #C8891A;
+            border-color: #C8891A;
+        }
+
+        .template-nav button.active {
+            background: #C8891A;
+            color: #070604;
+            border-color: #C8891A;
+        }
+
+        .template-section {
+            display: none;
+        }
+
+        .template-section.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body style="margin:0;padding:0;background:#111;font-family:Georgia,serif;">
+
+    <div id="otp" class="template-section active">
+        <div style="background:#0A0806;padding:40px 16px;min-height:100vh;">
+
+            <!-- Outer wrapper -->
+            <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%"
+                style="max-width:600px;margin:0 auto;">
+                <tr>
+                    <td>
+
+                        <!-- ── TOP GOLD LINE ── -->
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tr>
+                                <td
+                                    style="height:2px;background:linear-gradient(to right,#070604,#C8891A,#E8A020,#C8891A,#070604);font-size:0;line-height:0;">
+                                    &nbsp;</td>
+                            </tr>
+                        </table>
+
+                        <!-- ── HEADER ── -->
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%"
+                            style="background:#0E0C08;border-left:1px solid #3D2E1A;border-right:1px solid #3D2E1A;">
+                            <tr>
+                                <td style="padding:40px 48px 32px;text-align:center;">
+
+                                    <!-- Sigil -->
+                                    <div
+                                        style="font-family:'Cinzel',Georgia,serif;font-size:24px;color:#C8891A;letter-spacing:12px;margin-bottom:20px;text-shadow:0 0 20px rgba(200,137,26,.4);">
+                                        ⟁ ✦ ⟁</div>
+
+                                    <!-- Logo -->
+                                    <div
+                                        style="font-family:'Cinzel',Georgia,serif;font-weight:900;font-size:13px;letter-spacing:5px;text-transform:uppercase;color:#D4B896;line-height:1;">
+                                        BYTE</div>
+                                    <div
+                                        style="font-family:'Cinzel',Georgia,serif;font-weight:900;font-size:36px;letter-spacing:6px;text-transform:uppercase;background:linear-gradient(135deg,#F0D080,#E8A020,#C8891A);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;color:#C8891A;line-height:1.1;margin-bottom:6px;">
+                                        BURST</div>
+                                    <div
+                                        style="font-family:'Cormorant Garamond','Georgia',serif;font-style:italic;font-size:12px;letter-spacing:4px;color:#7A6548;margin-bottom:0;">
+                                        A Tech Saga · Chapter III</div>
+
+                                </td>
+                            </tr>
+
+                            <!-- Gold separator -->
+                            <tr>
+                                <td style="padding:0 48px;">
+                                    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                        <tr>
+                                            <td
+                                                style="height:1px;background:linear-gradient(to right,transparent,#3D2E1A,transparent);font-size:0;">
+                                                &nbsp;</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- ── MAIN CONTENT ── -->
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%"
+                            style="background:#0E0C08;border-left:1px solid #3D2E1A;border-right:1px solid #3D2E1A;">
+                            <tr>
+                                <td style="padding:40px 48px 36px;">
+
+                                    <!-- Badge -->
+                                    <div style="text-align:center;margin-bottom:24px;">
+                                        <span
+                                            style="font-family:'Cinzel',Georgia,serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:#B09070;border:1px solid #3D2E1A;padding:5px 18px;display:inline-block;">Voice
+                                            Cipher Transmission</span>
+                                    </div>
+
+                                    <!-- Title -->
+                                    <h1
+                                        style="font-family:'Cinzel',Georgia,serif;font-weight:900;font-size:26px;letter-spacing:3px;text-transform:uppercase;color:#D4B896;text-align:center;margin:0 0 12px;line-height:1.2;">
+                                        Speak the Code</h1>
+
+                                    <!-- Subtitle -->
+                                    <p
+                                        style="font-family:'Cormorant Garamond','Georgia',serif;font-style:italic;font-size:16px;line-height:1.7;color:#B09070;text-align:center;margin:0 0 32px;">
+                                        "The desert has sent a cipher to your spice channel.<br>Enter it before the
+                                        sands shift."
+                                    </p>
+
+                                    <!-- OTP BOX -->
+                                    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%"
+                                        style="margin-bottom:32px;">
+                                        <tr>
+                                            <td style="text-align:center;">
+
+                                                <!-- OTP label -->
+                                                <div
+                                                    style="font-family:'Cinzel',Georgia,serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:#7A6548;margin-bottom:16px;">
+                                                    Your Voice Cipher</div>
+
+                                                <!-- OTP digits row -->
+                                                <table role="presentation" border="0" cellpadding="0" cellspacing="0"
+                                                    style="margin:0 auto;border-collapse:separate;border-spacing:8px;">
+                                                    <tr>
+                                                        <!-- Digit 1 -->
+                                                        <td
+                                                            style="width:52px;height:64px;background:#070604;border:1px solid #C8891A;text-align:center;vertical-align:middle;">
+                                                            <span
+                                                                style="font-family:'Cinzel',Georgia,serif;font-weight:700;font-size:28px;color:#E8C060;letter-spacing:0;">${digits[0]}</span>
+                                                        </td>
+                                                        <!-- Digit 2 -->
+                                                        <td
+                                                            style="width:52px;height:64px;background:#070604;border:1px solid #C8891A;text-align:center;vertical-align:middle;">
+                                                            <span
+                                                                style="font-family:'Cinzel',Georgia,serif;font-weight:700;font-size:28px;color:#E8C060;">${digits[1]}</span>
+                                                        </td>
+                                                        <!-- Digit 3 -->
+                                                        <td
+                                                            style="width:52px;height:64px;background:#070604;border:1px solid #C8891A;text-align:center;vertical-align:middle;">
+                                                            <span
+                                                                style="font-family:'Cinzel',Georgia,serif;font-weight:700;font-size:28px;color:#E8C060;">${digits[2]}</span>
+                                                        </td>
+                                                        <!-- Separator -->
+                                                        <td
+                                                            style="width:16px;text-align:center;vertical-align:middle;color:#3D2E1A;font-size:20px;font-family:Georgia,serif;">
+                                                            ·</td>
+                                                        <!-- Digit 4 -->
+                                                        <td
+                                                            style="width:52px;height:64px;background:#070604;border:1px solid #C8891A;text-align:center;vertical-align:middle;">
+                                                            <span
+                                                                style="font-family:'Cinzel',Georgia,serif;font-weight:700;font-size:28px;color:#E8C060;">${digits[3]}</span>
+                                                        </td>
+                                                        <!-- Digit 5 -->
+                                                        <td
+                                                            style="width:52px;height:64px;background:#070604;border:1px solid #C8891A;text-align:center;vertical-align:middle;">
+                                                            <span
+                                                                style="font-family:'Cinzel',Georgia,serif;font-weight:700;font-size:28px;color:#E8C060;">${digits[4]}</span>
+                                                        </td>
+                                                        <!-- Digit 6 -->
+                                                        <td
+                                                            style="width:52px;height:64px;background:#070604;border:1px solid #C8891A;text-align:center;vertical-align:middle;">
+                                                            <span
+                                                                style="font-family:'Cinzel',Georgia,serif;font-weight:700;font-size:28px;color:#E8C060;">${digits[5]}</span>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+
+                                                <!-- Full OTP string copy line -->
+                                                <div
+                                                    style="margin-top:18px;padding:10px 24px;background:rgba(200,137,26,.07);border:1px solid rgba(200,137,26,.25);display:inline-block;">
+                                                    <span
+                                                        style="font-family:'Cinzel',Georgia,serif;font-size:20px;font-weight:700;letter-spacing:10px;color:#C8891A;">${otp}</span>
+                                                </div>
+
+                                                <!-- Expiry note -->
+                                                <div
+                                                    style="margin-top:16px;font-family:'Cormorant Garamond','Georgia',serif;font-style:italic;font-size:13px;color:#7A6548;">
+                                                    This cipher expires in <strong
+                                                        style="color:#B09070;font-style:normal;">10 minutes.</strong>
+                                                </div>
+
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                    <!-- Divider -->
+                                    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%"
+                                        style="margin-bottom:28px;">
+                                        <tr>
+                                            <td
+                                                style="height:1px;background:linear-gradient(to right,transparent,#3D2E1A,transparent);font-size:0;">
+                                                &nbsp;</td>
+                                        </tr>
+                                    </table>
+
+                                    <!-- Body text -->
+                                    <p
+                                        style="font-family:'Cormorant Garamond','Georgia',serif;font-size:16px;line-height:1.8;color:#B09070;margin:0 0 16px;">
+                                        A verification cipher has been dispatched to your registered spice channel.
+                                        Enter it in the ByteBurst portal to confirm your identity and gain passage into
+                                        the sietch.
+                                    </p>
+                                    <p
+                                        style="font-family:'Cormorant Garamond','Georgia',serif;font-size:15px;line-height:1.7;color:#7A6548;margin:0 0 28px;">
+                                        If you did not request this cipher, disregard this transmission. The desert
+                                        forgets those who do not claim their passage.
+                                    </p>
+
+                                    <!-- DUNE Quote block -->
+                                    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%"
+                                        style="margin-bottom:8px;">
+                                        <tr>
+                                            <td
+                                                style="border-left:2px solid rgba(200,137,26,.4);padding:14px 20px;background:rgba(200,137,26,.05);">
+                                                <p
+                                                    style="font-family:'Cormorant Garamond','Georgia',serif;font-style:italic;font-size:15px;line-height:1.7;color:rgba(200,137,26,.7);margin:0 0 8px;">
+                                                    "A Mentat does not guess the code. A Mentat calculates, verifies,
+                                                    and knows with certainty."
+                                                </p>
+                                                <span
+                                                    style="font-family:'Cinzel',Georgia,serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#3D2E1A;">—
+                                                    Mentat School of Ix, Primary Axiom</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- ── BOTTOM GOLD LINE ── -->
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tr>
+                                <td
+                                    style="height:1px;background:linear-gradient(to right,#070604,rgba(61,46,26,.5),#070604);font-size:0;">
+                                    &nbsp;</td>
+                            </tr>
+                        </table>
+
+                        <!-- ── FOOTER ── -->
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%"
+                            style="background:#070604;border-left:1px solid rgba(61,46,26,.3);border-right:1px solid rgba(61,46,26,.3);border-bottom:1px solid rgba(61,46,26,.3);">
+                            <tr>
+                                <td style="padding:28px 48px;text-align:center;">
+                                    <div
+                                        style="font-family:'Cinzel',Georgia,serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:#3D2E1A;margin-bottom:10px;">
+                                        ⟁ &nbsp; The Spice Must Flow &nbsp; ⟁</div>
+                                    <div
+                                        style="font-family:'Cormorant Garamond','Georgia',serif;font-style:italic;font-size:13px;color:#3D2E1A;margin-bottom:8px;">
+                                        ByteBurst — A Tech Saga Chapter III · Cooch Behar Government Engineering College
+                                    </div>
+                                    <div
+                                        style="font-family:'Cinzel',Georgia,serif;font-size:9px;letter-spacing:2px;color:#2A1E10;">
+                                        <a href=""
+                                            style="color:#2A1E10;text-decoration:none;">byteburst.dev</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+    `
+}

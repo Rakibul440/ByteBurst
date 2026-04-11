@@ -1,0 +1,662 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap');
+
+/* ════ PAGE WRAPPER ════ */
+.ot-page {
+    min-height: 100vh;
+    background: #070604;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5rem 1.5rem 3rem;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+/* Background layers */
+.ot-page-glow {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse 65% 55% at 50% 0%, rgba(200, 137, 26, .1) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 50% 100%, rgba(160, 90, 5, .08) 0%, transparent 55%);
+}
+
+.ot-page-grain {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.025'/%3E%3C/svg%3E");
+}
+
+/* Floating sand particles */
+.ot-sand-dot {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(200, 137, 26, .18);
+    pointer-events: none;
+    animation: ot-float var(--dur, 8s) var(--delay, 0s) ease-in-out infinite alternate;
+}
+
+@keyframes ot-float {
+    from {
+        transform: translate(0, 0) scale(1);
+        opacity: .12;
+    }
+
+    to {
+        transform: translate(var(--tx, 10px), var(--ty, -20px)) scale(1.3);
+        opacity: .32;
+    }
+}
+
+/* ════ CARD ════ */
+.ot-card {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 480px;
+    background: #0E0C08;
+    border: 1px solid #3D2E1A;
+    padding: 3.2rem 2.8rem 3rem;
+    animation: ot-rise .9s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+/* Gold top accent */
+.ot-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #C8891A, transparent);
+}
+
+/* Bottom accent */
+.ot-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 15%;
+    right: 15%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(61, 46, 26, .6), transparent);
+}
+
+/* Corner ornaments */
+.ot-corner {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-color: #C8891A;
+    border-style: solid;
+    opacity: .55;
+}
+
+.ot-c-tl {
+    top: -1px;
+    left: -1px;
+    border-width: 1.5px 0 0 1.5px;
+}
+
+.ot-c-tr {
+    top: -1px;
+    right: -1px;
+    border-width: 1.5px 1.5px 0 0;
+}
+
+.ot-c-bl {
+    bottom: -1px;
+    left: -1px;
+    border-width: 0 0 1.5px 1.5px;
+}
+
+.ot-c-br {
+    bottom: -1px;
+    right: -1px;
+    border-width: 0 1.5px 1.5px 0;
+}
+
+@keyframes ot-rise {
+    from {
+        opacity: 0;
+        transform: translateY(36px) scale(.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ════ HEADER ════ */
+.ot-header {
+    text-align: center;
+    margin-bottom: 2.4rem;
+}
+
+.ot-sigil {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 1.3rem;
+    color: #C8891A;
+    margin-bottom: 1rem;
+    letter-spacing: .3em;
+    animation: ot-sigil-spin 12s linear infinite;
+}
+
+@keyframes ot-sigil-spin {
+    0% {
+        text-shadow: 0 0 8px rgba(200, 137, 26, .3);
+    }
+
+    50% {
+        text-shadow: 0 0 22px rgba(232, 160, 32, .7), 0 0 40px rgba(200, 137, 26, .25);
+    }
+
+    100% {
+        text-shadow: 0 0 8px rgba(200, 137, 26, .3);
+    }
+}
+
+.ot-badge {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: .5rem;
+    letter-spacing: .32em;
+    text-transform: uppercase;
+    color: #B09070;
+    border: 1px solid rgba(61, 46, 26, .7);
+    padding: .28rem 1rem;
+    margin-bottom: 1rem;
+}
+
+.ot-title {
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: transparent;
+    background: linear-gradient(150deg, #F0D080 0%, #E8A020 35%, #C8891A 65%, #F0C840 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    filter: drop-shadow(0 0 24px rgba(200, 137, 26, .3));
+    margin-bottom: .5rem;
+    line-height: 1.05;
+}
+
+.ot-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: #B09070;
+    letter-spacing: .06em;
+    line-height: 1.55;
+    margin-bottom: .6rem;
+}
+
+.ot-email {
+    font-family: 'Cinzel', serif;
+    font-size: .58rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: #C8891A;
+    background: rgba(200, 137, 26, .08);
+    border: 1px solid rgba(200, 137, 26, .25);
+    padding: .3rem .9rem;
+    display: inline-block;
+    margin-top: .3rem;
+}
+
+/* ════ OTP INPUT ROW ════ */
+.ot-inputs-wrap {
+    display: flex;
+    justify-content: center;
+    gap: .7rem;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+/* Subtle glow behind inputs on focus-within */
+.ot-inputs-wrap::before {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(200, 137, 26, .4), transparent);
+    opacity: 0;
+    transition: opacity .4s;
+}
+
+.ot-inputs-wrap:focus-within::before {
+    opacity: 1;
+}
+
+.ot-digit {
+    width: 52px;
+    height: 62px;
+    background: #070604;
+    border: 1px solid #3D2E1A;
+    color: #E8A020;
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    text-align: center;
+    outline: none;
+    border-radius: 0;
+    caret-color: #C8891A;
+    transition: border-color .3s, box-shadow .3s, background .3s, transform .2s;
+    letter-spacing: .05em;
+}
+
+.ot-digit::selection {
+    background: rgba(200, 137, 26, .25);
+}
+
+.ot-digit:focus {
+    border-color: #C8891A;
+    background: #0A0804;
+    box-shadow: 0 0 0 1px rgba(200, 137, 26, .15),
+        0 0 20px rgba(200, 137, 26, .1),
+        inset 0 0 12px rgba(200, 137, 26, .05);
+    transform: translateY(-2px);
+}
+
+.ot-digit.filled {
+    border-color: rgba(200, 137, 26, .45);
+    color: #E8C060;
+}
+
+.ot-digit.error {
+    border-color: rgba(186, 100, 80, .7) !important;
+    background: rgba(186, 100, 80, .05) !important;
+    animation: ot-shake .4s ease both;
+}
+
+@keyframes ot-shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    20% {
+        transform: translateX(-5px);
+    }
+
+    40% {
+        transform: translateX(5px);
+    }
+
+    60% {
+        transform: translateX(-4px);
+    }
+
+    80% {
+        transform: translateX(4px);
+    }
+}
+
+/* Separator dot between groups of 3 */
+.ot-sep {
+    display: flex;
+    align-items: center;
+    padding-top: .2rem;
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    color: rgba(61, 46, 26, .7);
+    user-select: none;
+}
+
+/* ════ COPY ROW ════ */
+.ot-copy-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.8rem;
+    padding: .5rem .8rem;
+    background: rgba(7, 6, 4, .6);
+    border: 1px solid rgba(61, 46, 26, .4);
+    gap: .8rem;
+}
+
+.ot-copy-display {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: .95rem;
+    letter-spacing: .35em;
+    color: #B09070;
+    flex: 1;
+    min-width: 0;
+    word-break: break-all;
+    transition: color .3s;
+}
+
+.ot-copy-display.complete {
+    color: #C8891A;
+}
+
+.ot-copy-btn {
+    font-family: 'Cinzel', serif;
+    font-size: .45rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: #B09070;
+    background: transparent;
+    border: 1px solid rgba(61, 46, 26, .6);
+    padding: .38rem .9rem;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+    transition: color .3s, border-color .3s, background .3s;
+}
+
+.ot-copy-btn:hover {
+    color: #C8891A;
+    border-color: rgba(200, 137, 26, .5);
+    background: rgba(200, 137, 26, .06);
+}
+
+.ot-copy-btn.copied {
+    color: #7AC8A0;
+    border-color: rgba(122, 200, 160, .4);
+    background: rgba(122, 200, 160, .04);
+}
+
+.ot-copy-icon {
+    font-size: .65rem;
+}
+
+/* ════ DIVIDER ════ */
+.ot-divider {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    margin-bottom: 1.8rem;
+}
+
+.ot-div-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, #3D2E1A, transparent);
+}
+
+.ot-div-line.r {
+    background: linear-gradient(to left, #3D2E1A, transparent);
+}
+
+.ot-div-gem {
+    width: 5px;
+    height: 5px;
+    background: #3D2E1A;
+    transform: rotate(45deg);
+}
+
+/* ════ SUBMIT BUTTON ════ */
+.ot-submit {
+    width: 100%;
+    font-family: 'Cinzel', serif;
+    font-size: .64rem;
+    font-weight: 700;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: #070604;
+    background: #C8891A;
+    border: 1px solid #C8891A;
+    padding: 1.05rem;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: background .35s, box-shadow .35s;
+    margin-bottom: 1.2rem;
+}
+
+.ot-submit::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, .12), transparent);
+    opacity: 0;
+    transition: opacity .3s;
+}
+
+.ot-submit:hover:not(:disabled) {
+    background: #E8A020;
+    box-shadow: 0 0 36px rgba(200, 137, 26, .4), 0 0 12px rgba(200, 137, 26, .2);
+}
+
+.ot-submit:hover:not(:disabled)::before {
+    opacity: 1;
+}
+
+.ot-submit:disabled {
+    opacity: .45;
+    cursor: not-allowed;
+}
+
+/* Loading pulse on button */
+.ot-submit.loading {
+    background: #A07015;
+    animation: ot-pulse-btn 1.2s ease-in-out infinite;
+}
+
+@keyframes ot-pulse-btn {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(200, 137, 26, .3);
+    }
+
+    50% {
+        box-shadow: 0 0 0 8px rgba(200, 137, 26, .0);
+    }
+}
+
+/* ════ ERROR / SUCCESS STATE ════ */
+.ot-error-msg {
+    font-family: 'Cinzel', serif;
+    font-size: .52rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: #C87060;
+    text-align: center;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    animation: ot-rise .3s ease both;
+}
+
+.ot-error-gem {
+    width: 5px;
+    height: 5px;
+    background: #C87060;
+    transform: rotate(45deg);
+    flex-shrink: 0;
+}
+
+/* ════ RESEND ROW ════ */
+.ot-resend-row {
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: .92rem;
+    color: #8A7055;
+    margin-bottom: 1.6rem;
+}
+
+.ot-resend-btn {
+    font-family: 'Cinzel', serif;
+    font-size: .5rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: #C8891A;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: .4rem;
+    transition: color .3s;
+    padding: 0;
+}
+
+.ot-resend-btn:hover:not(:disabled) {
+    color: #E8A020;
+}
+
+.ot-resend-btn:disabled {
+    color: #3D2E1A;
+    cursor: not-allowed;
+}
+
+.ot-cooldown {
+    font-family: 'Cinzel', serif;
+    font-size: .5rem;
+    letter-spacing: .15em;
+    color: #7A6548;
+    margin-left: .4rem;
+}
+
+/* ════ QUOTE ════ */
+.ot-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: .9rem;
+    line-height: 1.7;
+    color: rgba(180, 150, 110, .55);
+    text-align: center;
+    margin-bottom: .4rem;
+    padding: 0 .5rem;
+}
+
+.ot-quote-attr {
+    font-family: 'Cinzel', serif;
+    font-size: .44rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: rgba(61, 46, 26, .8);
+    text-align: center;
+}
+
+/* ════ SUCCESS SCREEN ════ */
+.ot-success {
+    text-align: center;
+    animation: ot-rise .6s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+.ot-success-rune {
+    font-size: 2.5rem;
+    color: #C8891A;
+    display: block;
+    margin-bottom: .8rem;
+    animation: ot-rune-in 1s cubic-bezier(.16, 1, .3, 1) both;
+    filter: drop-shadow(0 0 20px rgba(200, 137, 26, .5));
+}
+
+@keyframes ot-rune-in {
+    from {
+        transform: rotate(-90deg) scale(0);
+        opacity: 0;
+    }
+
+    to {
+        transform: rotate(0deg) scale(1);
+        opacity: 1;
+    }
+}
+
+.ot-success-title {
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    font-size: 1.5rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #E8A020;
+    margin-bottom: .6rem;
+    filter: drop-shadow(0 0 16px rgba(232, 160, 32, .35));
+}
+
+.ot-success-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: rgba(212, 184, 150, .75);
+    max-width: 340px;
+    margin: 0 auto 1rem;
+}
+
+.ot-success-attr {
+    font-family: 'Cinzel', serif;
+    font-size: .48rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: rgba(61, 46, 26, .9);
+}
+
+.ot-success-line {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #C8891A, transparent);
+    margin: 1.2rem auto;
+}
+
+/* particles burst on success */
+.ot-burst-particle {
+    position: absolute;
+    border-radius: 50%;
+    background: #C8891A;
+    pointer-events: none;
+    animation: ot-burst var(--dur, .6s) ease-out forwards;
+}
+
+@keyframes ot-burst {
+    from {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: .9;
+    }
+
+    to {
+        transform: translate(calc(-50% + var(--tx, 0px)), calc(-50% + var(--ty, -40px))) scale(0);
+        opacity: 0;
+    }
+}
+
+/* ════ RESPONSIVE ════ */
+@media(max-width:480px) {
+    .ot-card {
+        padding: 2.5rem 1.8rem 2.5rem;
+    }
+
+    .ot-digit {
+        width: 42px;
+        height: 54px;
+        font-size: 1.3rem;
+    }
+
+    .ot-inputs-wrap {
+        gap: .45rem;
+    }
+}
+
+@media(max-width:360px) {
+    .ot-digit {
+        width: 36px;
+        height: 48px;
+        font-size: 1.1rem;
+    }
+
+    .ot-inputs-wrap {
+        gap: .35rem;
+    }
+}

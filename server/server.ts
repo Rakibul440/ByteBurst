@@ -3,6 +3,7 @@ import "dotenv/config"
 import cors from 'cors'
 import cookieParser from "cookie-parser"
 import { authRouter } from "./routes/auth.route"
+import { userRouter } from "./routes/user.route"
 
 const app = express()
 const port = process.env.PORT || 3000;
@@ -18,6 +19,8 @@ app.use(cookieParser())
 
 // routers
 app.use('/api/v1/auth', authRouter)
+app.use('/api/v1/user', userRouter)
+
 
 app.get("/", (req: Request, res: Response) => {
     res.json({

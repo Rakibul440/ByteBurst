@@ -1,85 +1,72 @@
-import { useRef, useEffect } from "react";
+import {Routes, Route} from "react-router-dom"
+import Auth from "./pages/Auth";
+import {Toaster} from "sonner"
+import Cursor from "./components/Cursor";
+import UserProfile from "./pages/UserProfile";
+import Navbar from "./components/Navbar";
+import HomePage from "./pages/Home";
+import TeamPage from "./pages/TeamPage";
+import EventsPage from "./pages/EventsPage";
+import CodeOThon from "./pages/registrations/Code-O-Thon";
+import TechExhibition from "./pages/registrations/TechExhibition";
+import GraphicsDesign from "./pages/registrations/GraphicsDesign";
+import TechAptiQuiz from "./pages/registrations/TechAptiQuiz";
+import Autocad from "./pages/registrations/Autocad";
+import TechnoCommercial from "./pages/registrations/TechnoCommercial";
+import Hackathon from "./pages/registrations/Hackathon";
+import PromptEngineering from "./pages/registrations/PromptEngineering";
+import BugBunty from "./pages/registrations/BugBunty";
+import CssWarriors from "./pages/registrations/CssWarriors";
+import AdminPage from "./pages/AdminPage";
+import OrganizersPage from "./pages/Organizers";
+import PrizePage from "./pages/Prizepage";
+import Footer from "./components/Footer";
+import OTPVerify from "./pages/Otpverify";
 
 export default function App() {
-  const cursorRef = useRef(null);
-  const ringRef = useRef(null);
-
-  useEffect(() => {
-    let mx = 0, my = 0; // mouse position
-    let rx = 0, ry = 0; // ring position
-
-    const moveHandler = (e) => {
-      mx = e.clientX;
-      my = e.clientY;
-
-      if (cursorRef.current) {
-        cursorRef.current.style.transform = `translate(${mx}px, ${my}px) translate(-50%, -50%)`;
-      }
-    };
-
-    document.addEventListener("mousemove", moveHandler);
-
-    const animateRing = () => {
-      rx += (mx - rx) * 0.12;
-      ry += (my - ry) * 0.12;
-
-      if (ringRef.current) {
-        ringRef.current.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
-      }
-
-      requestAnimationFrame(animateRing);
-    };
-
-    animateRing();
-
-    // Hover effects
-    const hoverElements = document.querySelectorAll(
-      "a, button, .comp-card, .sponsor-logo"
-    );
-
-    const handleEnter = () => {
-      if (ringRef.current && cursorRef.current) {
-        ringRef.current.style.width = "60px";
-        ringRef.current.style.height = "60px";
-        ringRef.current.style.opacity = "0.3";
-        cursorRef.current.style.transform = "translate(-50%,-50%) scale(1.5)";
-      }
-    };
-
-    const handleLeave = () => {
-      if (ringRef.current && cursorRef.current) {
-        ringRef.current.style.width = "36px";
-        ringRef.current.style.height = "36px";
-        ringRef.current.style.opacity = "0.5";
-        cursorRef.current.style.transform = cursorRef.current.style.transform.replace(
-          "translate(-50%,-50%) scale(1)",
-          ""
-        );
-      }
-    };
-
-    hoverElements.forEach((el) => {
-      el.addEventListener("mouseenter", handleEnter);
-      el.addEventListener("mouseleave", handleLeave);
-    });
-
-    // Cleanup 🧹
-    return () => {
-      document.removeEventListener("mousemove", moveHandler);
-      hoverElements.forEach((el) => {
-        el.removeEventListener("mouseenter", handleEnter);
-        el.removeEventListener("mouseleave", handleLeave);
-      });
-    };
-  }, []);
 
   return (
-    <>
-      <div ref={cursorRef} className="cursor"></div>
-      <div ref={ringRef} className="cursor-ring"></div>
+    <div className="App">
+      <Toaster toastOptions={{
+        style: {
+          background: "#1a120b",
+          color: "#ffb347",
+          border: "1px solid rgba(255,180,80,0.3)",
+          borderRadius : '0px'
+        }}} 
+      />
+      <Cursor />
+      <Navbar />
+      <Routes>
+        <Route path="" element={<HomePage/>} />
+        <Route path="/auth" element={<Auth/>}/>
+        <Route path="/profile/:userId" element={<UserProfile/>}/>
+        <Route path="/admin/profile/:userId" element={<AdminPage/>} />
+        <Route path="/team" element={<TeamPage/>} />
+        <Route path="/organizers" element={<OrganizersPage/>} />
+        <Route path="/events" element={<EventsPage/>} />
+        <Route path="/prizes" element={<PrizePage/>} />
+        <Route path="/verify" element={<OTPVerify/>} />
 
-        <div className="grid-bg"></div>
 
-    </>
+
+        {/* Registration page */}
+        <Route path="/events/code-a-thon" element={<CodeOThon/>} />
+        <Route path="/events/tech-exhibition" element={<TechExhibition/>} />
+        <Route path="/events/graphics-design" element={<GraphicsDesign/>} />
+        <Route path="/events/tech-apti-quiz" element={<TechAptiQuiz/>} />
+        <Route path="/events/autocad" element={<Autocad/>} />
+        <Route path="/events/techno-commercial" element={<TechnoCommercial/>} />
+        <Route path="/events/hackathon" element={<Hackathon/>} />
+        <Route path="/events/prompt-engineering" element={<PromptEngineering/>} />
+        <Route path="/events/bug-bounty" element={<BugBunty/>} />
+        <Route path="/events/css-warriors" element={<CssWarriors/>} />
+
+        
+      </Routes>
+
+      <Footer />
+
+    </div>
   );
 }
