@@ -1,6 +1,12 @@
 import { useState } from "react";
 import "./styles/event.css"
 import { Link } from "react-router-dom";
+import BugBountyPoster from "../assets/img/BugBountyPoster.png"
+import PromtEngineeringPoster from "../assets/img/PromtEngineeringPoster.png"
+import CodeAThonPoster from "../assets/img/Code-A-ThonPoster.png"
+import CSSWarriorPoster from "../assets/img/CSSWarriorPoster.png"
+
+
 
 /* ═══════════════════════════════════════════════════════════
    ByteBurst — Events Page
@@ -15,6 +21,25 @@ import { Link } from "react-router-dom";
    → Edit `details` array (tag-style info rows)
 ───────────────────────────────────────────────────────── */
 const EVENTS = [
+  {
+    id: 8,
+    name: "Prompt Engineering",
+    duneTitle: "The Voice of Command",
+    sigil: "◈",
+    category: "AI",
+    poster: PromtEngineeringPoster,
+    tagline: "Speak precisely. The machine bends to those who know the words.",
+    quote: "The Bene Gesserit used the Voice to command. You use the prompt. The principle is the same.",
+    quoteAttr: "— Reverend Mother Gaius Helen Mohiam, AI Edition",
+    details: [
+      { icon: "◈", label: "Mode",     value: "Individual" },
+      { icon: "◈", label: "Duration", value: "90 Minutes" },
+      { icon: "◈", label: "Tools",    value: "GPT-4 / Gemini" },
+      { icon: "◈", label: "Judged",   value: "Output Quality" },
+    ],
+    desc: "Craft prompts that extract the impossible from large language models. The one who bends the machine most elegantly — using fewest words to greatest effect — earns mastery.",
+    registerLink: "prompt-engineering",
+  },
   {
     id: 1,
     name: "Tech Exhibition",
@@ -116,7 +141,7 @@ const EVENTS = [
     duneTitle: "The Worm Rider's Sprint",
     sigil: "⟁",
     category: "Coding",
-    poster: "https://placehold.co/500x700/0E0C08/C8891A?text=Code-A-Thon",
+    poster: CodeAThonPoster,
     tagline: "Ride the worm. Solve the storm. Be the last standing.",
     quote: "The sandworm does not wait for the rider to be ready. Neither does the problem set.",
     quoteAttr: "— Fedaykin Combat Code Manual",
@@ -149,31 +174,12 @@ const EVENTS = [
     registerLink: "hackathon",
   },
   {
-    id: 8,
-    name: "Prompt Engineering",
-    duneTitle: "The Voice of Command",
-    sigil: "◈",
-    category: "AI",
-    poster: "https://placehold.co/500x700/0E0C08/C8891A?text=Prompt+Engineering",
-    tagline: "Speak precisely. The machine bends to those who know the words.",
-    quote: "The Bene Gesserit used the Voice to command. You use the prompt. The principle is the same.",
-    quoteAttr: "— Reverend Mother Gaius Helen Mohiam, AI Edition",
-    details: [
-      { icon: "◈", label: "Mode",     value: "Individual" },
-      { icon: "◈", label: "Duration", value: "90 Minutes" },
-      { icon: "◈", label: "Tools",    value: "GPT-4 / Gemini" },
-      { icon: "◈", label: "Judged",   value: "Output Quality" },
-    ],
-    desc: "Craft prompts that extract the impossible from large language models. The one who bends the machine most elegantly — using fewest words to greatest effect — earns mastery.",
-    registerLink: "prompt-engineering",
-  },
-  {
     id: 9,
     name: "Bug Bounty",
     duneTitle: "The Hunt Across the Codebase",
     sigil: "⬡",
     category: "Security",
-    poster: "https://placehold.co/500x700/0E0C08/C8891A?text=Bug+Bounty",
+    poster: BugBountyPoster,
     tagline: "Every bug is a sandworm. Track it. Trap it. Claim your reward.",
     quote: "The desert hides its dangers well. So does poorly written code.",
     quoteAttr: "— Gurney Halleck's Security Briefings, Vol. II",
@@ -192,7 +198,7 @@ const EVENTS = [
     duneTitle: "Shapers of the Digital Dune",
     sigil: "❋",
     category: "Frontend",
-    poster: "https://placehold.co/500x700/0E0C08/C8891A?text=CSS+Warriors",
+    poster: CSSWarriorPoster,
     tagline: "The desert is your canvas. Style it into legend.",
     quote: "A Fremen shapes the desert. A CSS Warrior shapes the viewport — one declaration at a time.",
     quoteAttr: "— Liet-Kynes, Planetologist & Frontend Prophet",
