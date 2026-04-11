@@ -54,8 +54,8 @@ const DEFAULT_EVENT = {
   ],
 };
 
-const YEARS  = ["1st Year", "2nd Year", "3rd Year", "4th Year"];
-const DEPTS  = ["CSE", "IT", "ECE", "EEE", "ME", "CE", "Other"];
+const YEARS  = ["FIRST", "SECOND", "THIRD", "FINAL"];
+const DEPTS  = ["CSE", "ECE", "CE", "ME","CE"];
 
 
 /* ─── Field Component ────────────────────────────────────── */
@@ -170,11 +170,24 @@ export default function EventRegistrationPage({
           <div className="rg-corner rg-c-bl"/>
           <div className="rg-corner rg-c-br"/>
 
+
+          {/* =======  Correct it after registration function fixed */}
+          {/*             <div className="rg-success">
+              <span className="rg-success-sigil">⟁</span>
+              <h2 className="rg-success-title">Passage Granted</h2>
+              <p className="rg-success-body">
+                "You have been accepted into the trial. The desert remembers
+                every name that walks its sands with purpose."
+              </p>
+              <div className="rg-success-line"/>
+              <span className="rg-success-attr">— ByteBurst Registration Oracle</span>
+            </div> */}
+
           {submitted ? (
             /* ── Success screen ── */
             <div className="rg-success">
               <span className="rg-success-sigil">⟁</span>
-              <h2 className="rg-success-title">Passage Granted</h2>
+              <h2 className="rg-success-title">Registration hasn't strated yet</h2>
               <p className="rg-success-body">
                 "You have been accepted into the trial. The desert remembers
                 every name that walks its sands with purpose."

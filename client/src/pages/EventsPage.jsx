@@ -226,6 +226,9 @@ function EventCard({ event, index }) {
   const isFlipped = index % 2 === 1;
   const catColor  = CATEGORY_COLORS[event.category] || "#C8891A";
 
+    const [authenticated, setAuthenticated] = useState(true)
+
+
   return (
     <div className={`ev-card${isFlipped ? " ev-flip" : ""}`}>
       <span className="ev-card-watermark">0{index + 1}</span>
@@ -283,11 +286,11 @@ function EventCard({ event, index }) {
 
         {/* Buttons */}
         <div className="ev-btns">
-          <Link data-dune-text="ENTER THE SIETCH" data-dune-hover="true" to={event.registerLink} className="ev-btn-register">
+          <Link data-dune-text="ENTER THE SIETCH" data-dune-hover="true" to={authenticated ? `${event.registerLink}` : "/auth"} className="ev-btn-register">
             Seek Entry &nbsp;→
           </Link>
           <button data-dune-text="ENTER THE SIETCH" data-dune-hover="true" className="ev-btn-details">
-          <Link to={event.registerLink} className="">
+          <Link to={authenticated ? `${event.registerLink}` : "/auth"} className="">
             Learn More &nbsp;→
           </Link> </button>
            

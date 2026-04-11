@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./styles/team.css"
 import { MEMBERS } from "../assets/data/data";
 import { MemberCard } from "../components/MemberCard";
+import { toast } from "sonner";
 
 
 /* ─── DUNE Quotes for the page ───────────────────────────── */
@@ -87,7 +88,7 @@ export default function TeamPage() {
           "Prophecy does not ask permission. It arrives — and the worthy answer."
 
         </p>
-        <button className="tm-join-btn">Answer The Call &nbsp;→</button>
+        <button className="tm-join-btn" onClick={()=>toast.message("You'er not the worthy one!")}>Answer The Call &nbsp;→</button>
       </section>
 
     </div>

@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
    DUNE Cinematic Theme · No Navbar · No Cursor (external)
 ═══════════════════════════════════════════════════════════ */
 
-const EVENT_DATE = new Date("2025-09-15T09:00:00");
+const EVENT_DATE = new Date("2026-04-14T09:00:00");
 
 const QUOTES = [
   {

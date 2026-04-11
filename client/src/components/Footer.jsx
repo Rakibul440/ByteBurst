@@ -20,33 +20,32 @@ const NAV_COLS = [
     heading: "The Trials",
     duneHead: "Events",
     links: [
-      { label: "Tech Exhibition",     duneLabel: "The Grand Bazaar",      href: "#events" },
-      { label: "Hackathon",           duneLabel: "24-Hour Stillsuit",      href: "#events" },
-      { label: "Code-A-Thon",         duneLabel: "Worm Rider's Sprint",    href: "#events" },
-      { label: "CSS Warriors",        duneLabel: "Shapers of the Dune",    href: "#events" },
-      { label: "Bug Bounty",          duneLabel: "Hunt Across the Code",   href: "#events" },
-      { label: "Prompt Engineering",  duneLabel: "The Voice of Command",   href: "#events" },
+      { label: "Tech Exhibition",     duneLabel: "The Grand Bazaar",      href: "events" },
+      { label: "Hackathon",           duneLabel: "24-Hour Stillsuit",      href: "events" },
+      { label: "Code-A-Thon",         duneLabel: "Worm Rider's Sprint",    href: "events" },
+      { label: "CSS Warriors",        duneLabel: "Shapers of the Dune",    href: "events" },
+      { label: "Bug Bounty",          duneLabel: "Hunt Across the Code",   href: "events" },
+      { label: "Prompt Engineering",  duneLabel: "The Voice of Command",   href: "events" },
     ],
   },
   {
     heading: "The Saga",
     duneHead: "Navigate",
     links: [
-      { label: "Home",       duneLabel: "Enter the Desert",      href: "#home" },
-      { label: "About",      duneLabel: "The Lore",              href: "#about" },
-      { label: "Events",     duneLabel: "The Trials",            href: "#events" },
-      { label: "Team",       duneLabel: "The House",             href: "#team" },
-      { label: "Prizes",     duneLabel: "The Spice Rewards",     href: "#prizes" },
-      { label: "Register",   duneLabel: "Seek Passage",          href: "#register" },
+      { label: "Home",       duneLabel: "Enter the Desert",      href: "" },
+      { label: "Events",     duneLabel: "The Trials",            href: "events" },
+      { label: "Team",       duneLabel: "The House",             href: "team" },
+      { label: "Prizes",     duneLabel: "The Spice Rewards",     href: "prizes" },
+      { label: "Register",   duneLabel: "Seek Passage",          href: "auth" },
     ],
   },
   {
     heading: "The Signal",
     duneHead: "Contact",
     links: [
-      { label: "Instagram",   duneLabel: "The Vision Channel",    href: "#",     icon: "IG" },
-      { label: "LinkedIn",    duneLabel: "The Alliance Network",  href: "#",     icon: "LI" },
-      { label: "WhatsApp",    duneLabel: "Spice Transmission",    href: "#",     icon: "WA" },
+      { label: "Instagram",   duneLabel: "The Vision Channel",    href: "https://www.instagram.com/byteburst_a_tech_saga/",     icon: "IG" },
+      { label: "LinkedIn",    duneLabel: "The Alliance Network",  href: "",     icon: "LI" },
+      { label: "WhatsApp",    duneLabel: "Spice Transmission",    href: "https://chat.whatsapp.com/GXMYeBthP5OAUC2XVbvplR",     icon: "WA" },
       { label: "Email Us",    duneLabel: "The Written Scroll",    href: "mailto:byteburst@college.edu", icon: "✉" },
     ],
   },
@@ -182,10 +181,10 @@ export default function Footer({
   collegeName = "Cooch Behar Government Engineering College",
 }) {
   const SOCIAL_LINKS = [
-    { href:"#", label:"Instagram",  IconEl: SocialIcons.IG },
-    { href:"#", label:"LinkedIn",   IconEl: SocialIcons.LI },
-    { href:"#", label:"WhatsApp",   IconEl: SocialIcons.WA },
-    { href:"mailto:byteburst@college.edu", label:"Email", IconEl: SocialIcons["✉"] },
+    { href:"https://www.instagram.com/byteburst_a_tech_saga/", label:"Instagram",  IconEl: SocialIcons.IG },
+    { href:"", label:"LinkedIn",   IconEl: SocialIcons.LI },
+    { href:"https://chat.whatsapp.com/GXMYeBthP5OAUC2XVbvplR", label:"WhatsApp",   IconEl: SocialIcons.WA },
+    { href:"mailto:byteburst.2k26@gmail.com", label:"Email", IconEl: SocialIcons["✉"] },
   ];
 
   return (

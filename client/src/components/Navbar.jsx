@@ -23,6 +23,13 @@ export default function Navbar({
   const [scrolled,  setScrolled]  = useState(false);
   const [menuOpen,  setMenuOpen]  = useState(false);
 
+  const [authenticated, setAuthenticated] = useState(false)
+
+  const user = {
+    name : "Rakibul Islam",
+    username : "@Raki-001230311"
+  }
+
   /* ── Scroll listener ── */
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > scrollThreshold);
@@ -85,17 +92,32 @@ export default function Navbar({
           </ul>
 
           {/* ── Desktop register button ── */}
-          <button
-            className="dn-register"
-            onClick={handleRegister}
-            aria-label="Register for ByteBurst"
-          >
-            <div data-dune-text="ENTER THE SIETCH" data-dune-hover="true" className="dn-register-inner">
-              <div className="dn-register-fill" aria-hidden="true"/>
-              <span className="dn-register-main"><Link to="/auth">Seek Passage</Link></span>
-              <span className="dn-register-sub"> <Link to="/auth">Register Now</Link> </span>
-            </div>
-          </button>
+          {
+            !authenticated ? (
+              <button
+              className="dn-register"
+              onClick={handleRegister}
+              aria-label="Register for ByteBurst"
+            >
+              <div data-dune-text="ENTER THE SIETCH" data-dune-hover="true" className="dn-register-inner">
+                <div className="dn-register-fill" aria-hidden="true"/>
+                <span className="dn-register-main"><Link to="/auth">Seek Passage</Link></span>
+                <span className="dn-register-sub"> <Link to="/auth">Register Now</Link> </span>
+              </div>
+            </button>
+            ) : (
+              <button
+                className="dn-register"
+                aria-label="Register for ByteBurst"
+              >
+                <div data-dune-text="ENTER THE SIETCH" data-dune-hover="true" className="dn-register-inner">
+                  <div className="dn-register-fill" aria-hidden="true"/>
+                  <span className="dn-register-main"><Link to={`profile/${user.username}`}>{user.name}</Link></span>
+                  <span className="dn-register-sub"> <Link to={`profile/${user.username}`}>{user.username}</Link> </span>
+                </div>
+              </button>
+            )
+          }
 
           {/* ── Mobile hamburger ── */}
           <button

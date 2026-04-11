@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./styles/team.css"
 import { ORGANIZERS } from "../assets/data/data";
 import { MemberCard } from "../components/MemberCard";
+import { toast } from "sonner";
 
 
 /* ─── DUNE Quotes for the page ───────────────────────────── */
@@ -86,7 +87,7 @@ export default function OrganizersPage() {
         <p className="tm-closing-sub">
           "No one stands alone on Arrakis. Join the house. Shape the saga."
         </p>
-        <button className="tm-join-btn">Seek Passage &nbsp;→</button>
+        <button className="tm-join-btn" onClick={()=>{toast.message("You can't be a GOD like US!")}}>Seek Passage &nbsp;→</button>
       </section>
 
     </div>
