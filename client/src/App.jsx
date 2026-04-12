@@ -28,6 +28,7 @@ import HackathonProblemStatement from "./pages/HackathonProblemStatement";
 import {useAuth} from "../hooks/useAuth"
 import ProtectedRoute from "./components/ProtectedRoute";
 import OTPVerifyPage from "./pages/OTPVerifyPage";
+import axios from "axios";
 
 export default function App() {
 
@@ -60,7 +61,7 @@ export default function App() {
         {/* Protected */}
         <Route path="/profile/:userId" element={
           <ProtectedRoute>
-            <UserProfile user={user}/>
+            <UserProfile user={user} onUpdate={null}/>
           </ProtectedRoute>
         }/>
 

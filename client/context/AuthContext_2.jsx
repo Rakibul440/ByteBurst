@@ -18,7 +18,7 @@ export function AuthProvider({ children }) {
 
   const pendingEmail = useRef(null);
 
-  // ✅ Restore user on refresh
+  // Restore user on refresh
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
 
@@ -30,7 +30,7 @@ export function AuthProvider({ children }) {
     }
   }, []);
 
-  // ✅ Set authenticated user + persist
+  // Set authenticated user + persist
   const setAuthenticated = useCallback((userData) => {
     setUser(userData);
     setStatus("authenticated");
