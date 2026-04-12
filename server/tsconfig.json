@@ -1,11 +1,10 @@
 {
   "compilerOptions": {
     "module": "CommonJS",
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "target": "ES2023",
     "strict": true,
     "esModuleInterop": true,
-    "ignoreDeprecations": "6.0",
     "rootDir": ".",
     "outDir": "./dist"
   },
@@ -14,7 +13,8 @@
   ],
   "exclude": [
     "node_modules",
-    "dist"
+    "dist",
+    "generated"
   ]
 }
 // {
