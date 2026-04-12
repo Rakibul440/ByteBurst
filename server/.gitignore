@@ -58,21 +58,4 @@ temp/
 .svelte-kit/
 vite.svg
 
-# Optional: Docker
 
-docker-compose.override.yml
-
-# Optional: Prisma
-
-prisma/dev.db
-prisma/dev.db-journal
-
-# Optional: TypeORM
-
-*.sqlite
-
-# Misc
-
-*.tgz
-
-/generated/prisma
