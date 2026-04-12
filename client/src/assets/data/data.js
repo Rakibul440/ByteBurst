@@ -9,6 +9,7 @@ import swarnali from "../img/swarnali.jpeg"
 import proyal from "../img/prolay.jpeg"
 import rupayan from "../img/rupyan.jpeg"
 import arif from "../img/arif.jpeg"
+import driti from "../img/Driti_R.jpeg"
 
 
 
@@ -87,7 +88,21 @@ export const MEMBERS = [
             github: "https://github.com/Rakibul440", 
             instagram: "https://www.instagram.com/sky.walk3r__/" 
         },
-    },
+      },
+        {
+        id: 1,
+        name: "Driti Ghosh",
+        role: "PR Lead",
+        duneTitle: "EE, Second Year",
+        img: driti,
+        quote: "The first step in avoiding a trap is knowing it exists.",
+        sigil: "⟁",
+        socials: { 
+            linkedin: " https://www.linkedin.com/in/driti-ghosh-9b2446341?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", 
+            github: "https://github.com/Rakibul440", 
+            instagram: "https://www.instagram.com/dritz.seno?igsh=MTJuY3gxeWRvdjBqMg==" 
+        },
+      },
       {
     id: 5,
     name: "Swarnali Talukdar",
@@ -198,6 +213,20 @@ export const MEMBERS = [
       linkedin: "www.linkedin.com/in/rupayan-sarkar",
       github: "",
       instagram: "https://www.instagram.com/_rupayan__?igsh=MTA4N2FlejM2ZjJibQ==",
+    },
+  },
+  {
+    id: 9,
+    name: "Rajorsi Sinharay",
+    role: "Techno Commercial Lead",
+    duneTitle: "ECE, Third Year",
+    img: rajorsi,
+    quote: "I must not fear. Fear is the mind-killer. I face the pitch without flinching.",
+    sigil: "⟟",
+    socials: {
+      linkedin: "https://www.linkedin.com/in/rajorsisinharay",
+      github: "",
+      instagram: "https://www.instagram.com/rajorshi_sr?igsh=ZnRndzZ3ZDZ4cXg5",
     },
   },
   {

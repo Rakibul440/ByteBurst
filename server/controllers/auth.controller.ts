@@ -296,7 +296,7 @@ export const login = async (req: Request, res: Response) => {
                     createdAt: user.createdAt,
                     updatedAt: user.updatedAt,
                     isActive: user.isActive,
-                    ifEmailVerified: user.isEmailVerified
+                    isEmailVerified: user.isEmailVerified
                 }
             })
 

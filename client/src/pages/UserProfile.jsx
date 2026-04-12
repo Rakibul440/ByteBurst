@@ -30,7 +30,7 @@ import "./styles/profile.css"
 ═══════════════════════════════════════════════════════════ */
 
 /* ─── Enums matching Prisma schema ──────────────────────── */
-const DEPT_OPTIONS = ["CSE","IT","ECE","EEE","ME","CE","Other"];
+const DEPT_OPTIONS = ["CSE","ECE","EE","ME","CE"];
 const YEAR_OPTIONS = ["FIRST","SECOND","THIRD","FOURTH"];
 const SEX_OPTIONS  = ["MALE","FEMALE","OTHER"];
 
@@ -41,10 +41,9 @@ const YEAR_DUNE = {
   FOURTH: "Fourth Cycle — The Navigator",
 };
 const DEPT_DUNE = {
-  CSE: "House of Code",  IT:  "House of Systems",
-  ECE: "House of Waves", EEE: "House of Energy",
+  CSE: "House of Code",  ECE:  "House of Systems",
+  EE: "House of Waves", 
   ME:  "House of Steel", CE:  "House of Earth",
-  Other: "House Unknown",
 };
 const ROLE_DUNE = { user:"Desert Walker", admin:"Sietch Commander", coordinator:"Guild Navigator" };
 
@@ -62,9 +61,9 @@ const DEFAULT_USER = {
   role: "user",
   createdAt: "2024-08-01T00:00:00Z",
   registrations: [
-    { id:"r1", event:{ name:"Code-A-Thon",       category:"Coding"   } },
-    { id:"r2", event:{ name:"CSS Warriors",       category:"Frontend" } },
-    { id:"r3", event:{ name:"Prompt Engineering", category:"AI"       } },
+    { id:"r1", event:{ name:"",       category:""   } },
+    { id:"r2", event:{ name:"",       category:"" } },
+    { id:"r3", event:{ name:"", category:""       } },
   ],
 };
 

@@ -1,0 +1,1 @@
+export {useAuthContext as useAuth} from "../context/AuthContext_2.jsx"

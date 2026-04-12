@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./styles/auth.css"
 import { Field } from "../components/Field";
 import { toast } from "sonner";
-
+import { useNavigate } from "react-router-dom"
+import { useAuth } from "../../hooks/useAuth";
 
 
 export default function Auth() {
@@ -13,16 +14,79 @@ export default function Auth() {
   const [login, setLogin] = useState({ email: "", password: "" });
   const [signup, setSignup] = useState({ name: "", roll: "", email: "", password: "" });
 
-  const handleSubmit = () => {
+  const [pending, setPending] = useState(false); // waiting for user to populate
+  const navigate = useNavigate()
+
+  const {signupFn, loginFn, isAuthenticated,user , error, } = useAuth()
+
+  console.log(isAuthenticated)
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
     setSubmitted(true);
+
     if(page === 'login'){
-        toast.success("loggid in successfully")
+
+      if (!login.email.trim()) return toast.error("Transmission frequency is required.");
+      if (!login.password.trim()) return toast.error("Voice cipher is required.");
+
+      const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/;
+      if (!emailRegex.test(login.email)) return toast.error("Enter correct email")
+
+      try {
+
+        const result = await loginFn({
+          email : login.email,
+          password : login.password
+        })
+
+        if(result.reason ==="Otp_Required"){
+          navigate("/verify");
+          return
+        }
+        localStorage.setItem("user", JSON.stringify(result.user));
+
+        toast.success("Successfully Logged in")
+        setSubmitted(false)
+        
+        navigate(`/profile/${result.user.username}`)
+
+      } catch (error) {
+        console.log(error.message)
+        toast.error("The cipher was not recognised. The desert does not forgive.")
+      }
     }
     else if(page === 'signup'){
-        toast.success("registered successfully")
+        // Basic client-side validation
+        if (!signup.name.trim())     return toast.error("Blood name is required.");
+        if (!signup.roll.trim())     return toast.error("Sietch number is required.");
+        if (!signup.email.trim())    return toast.error("Transmission frequency is required.");
+        if (signup.password.length < 4) return toast.error("Voice cipher must be at least 4 characters.");
+        
+        const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/;
+        const rollRegex = /^349\d{8}$/
+        if (!emailRegex.test(signup.email)) return toast.error("Enter correct email")
+        if (!rollRegex.test(signup.roll)) return toast.error("Enter correct roll")
+
+        try {
+          await signupFn({
+            name:     signup.name.trim(),
+            roll:     signup.roll.trim(),
+            email:    signup.email.trim(),
+            password: signup.password,
+          })
+          localStorage.setItem("verifyEmail", signup.email);
+          toast.success("Enter Otp to verify")
+          navigate("/verify")
+
+        } catch (error) {
+          toast.error(err.message || "The desert rejected your passage. Try again.");
+        }
     }
-    setTimeout(() => setSubmitted(false), 2500);
+    
   };
+
 
   const switchPage = (p) => {
     setPage(p);

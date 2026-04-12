@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./styles/navbar.css"
 import { Link } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
 
 
 const DEFAULT_LINKS = [
@@ -24,12 +25,9 @@ export default function Navbar({
   const [scrolled,  setScrolled]  = useState(false);
   const [menuOpen,  setMenuOpen]  = useState(false);
 
-  const [authenticated, setAuthenticated] = useState(false)
+  const {isAuthenticated,user} = useAuth()
 
-  const user = {
-    name : "Rakibul Islam",
-    username : "@Raki-001230311"
-  }
+
 
   /* ── Scroll listener ── */
   useEffect(() => {
@@ -94,7 +92,7 @@ export default function Navbar({
 
           {/* ── Desktop register button ── */}
           {
-            !authenticated ? (
+            !isAuthenticated ? (
               <button
               className="dn-register"
               onClick={handleRegister}

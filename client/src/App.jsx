@@ -1,4 +1,4 @@
-import {Routes, Route, useNavigate} from "react-router-dom"
+import {Routes, Route, useNavigate, Navigate} from "react-router-dom"
 import Auth from "./pages/Auth";
 import {Toaster} from "sonner"
 import Cursor from "./components/Cursor";
@@ -21,13 +21,23 @@ import AdminPage from "./pages/AdminPage";
 import OrganizersPage from "./pages/Organizers";
 import PrizePage from "./pages/Prizepage";
 import Footer from "./components/Footer";
-import OTPVerify from "./pages/Otpverify";
 import AboutPage from "./pages/Aboutpage";
 import HackathonProblemStatement from "./pages/HackathonProblemStatement";
+
+
+import {useAuth} from "../hooks/useAuth"
+import ProtectedRoute from "./components/ProtectedRoute";
+import OTPVerifyPage from "./pages/OTPVerifyPage";
 
 export default function App() {
 
   const navigate = useNavigate()
+
+  const {isAuthenticated, isOTPFlow, user, logout} = useAuth()
+
+    const userObj = JSON.parse(localStorage.getItem("user"));
+
+
 
   return (
     <div className="App">
@@ -43,16 +53,30 @@ export default function App() {
       <Navbar />
       <Routes>
         <Route path="" element={<HomePage/>} />
-        <Route path="/auth" element={<Auth/>}/>
-        <Route path="/profile/:userId" element={<UserProfile/>}/>
-        <Route path="/admin/profile/:userId" element={<AdminPage/>} />
+
+        <Route path="/auth" element={ isAuthenticated ? <Navigate to={`/profile/${user?.username}`} replace/> : <Auth/>}/>
+        <Route path="/verify" element={isOTPFlow ? <OTPVerifyPage/> : <Navigate to="/auth" replace />} />
+
+        {/* Protected */}
+        <Route path="/profile/:userId" element={
+          <ProtectedRoute>
+            <UserProfile user={user}/>
+          </ProtectedRoute>
+        }/>
+
+        <Route path="/admin/profile/" element={
+          <ProtectedRoute adminOnly>
+            <AdminPage/>
+          </ProtectedRoute>
+        } />
+
         <Route path="/team" element={<TeamPage/>} />
         <Route path="/organizers" element={<OrganizersPage/>} />
         <Route path="/events" element={<EventsPage/>} />
         <Route path="/prizes" element={<PrizePage/>} />
-        <Route path="/verify" element={<OTPVerify/>} />
         <Route path="/about" element={<AboutPage/>}  onRegister={() => navigate("/auth")} onExplore={()  => navigate("/events")}/>
         <Route path="/events/hackathon/problem-statements" element={<HackathonProblemStatement/>} onRegister={() => navigate("/events/hackathon")}  />
+
 
 
         {/* Registration page */}
