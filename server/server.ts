@@ -28,6 +28,12 @@ app.get("/", (req: Request, res: Response) => {
     })
 })
 
+app.get("/api/v1/health", (req: Request, res: Response) => {
+    res.json({
+        status: "ok"
+    })
+})
+
 
 app.listen(port, () => {
     console.log(`Server is runnig! \nServer :   http://localhost:${port}`);
