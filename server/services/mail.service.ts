@@ -26,7 +26,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export const sendmail = async (code: string, email: string) => {
     try {
         await resend.emails.send({
-            from: 'ByteBurst <onboarding@resend.dev>',
+            from: 'onboarding@resend.dev',
             to: email,
             subject: 'OTP Verification',
             html: otpTemplate_2(code),
