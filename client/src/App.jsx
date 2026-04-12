@@ -1,4 +1,4 @@
-import {Routes, Route} from "react-router-dom"
+import {Routes, Route, useNavigate} from "react-router-dom"
 import Auth from "./pages/Auth";
 import {Toaster} from "sonner"
 import Cursor from "./components/Cursor";
@@ -22,8 +22,12 @@ import OrganizersPage from "./pages/Organizers";
 import PrizePage from "./pages/Prizepage";
 import Footer from "./components/Footer";
 import OTPVerify from "./pages/Otpverify";
+import AboutPage from "./pages/Aboutpage";
+import HackathonProblemStatement from "./pages/HackathonProblemStatement";
 
 export default function App() {
+
+  const navigate = useNavigate()
 
   return (
     <div className="App">
@@ -47,7 +51,8 @@ export default function App() {
         <Route path="/events" element={<EventsPage/>} />
         <Route path="/prizes" element={<PrizePage/>} />
         <Route path="/verify" element={<OTPVerify/>} />
-
+        <Route path="/about" element={<AboutPage/>}  onRegister={() => navigate("/auth")} onExplore={()  => navigate("/events")}/>
+        <Route path="/events/hackathon/problem-statements" element={<HackathonProblemStatement/>} onRegister={() => navigate("/events/hackathon")}  />
 
 
         {/* Registration page */}

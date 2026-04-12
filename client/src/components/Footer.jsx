@@ -20,12 +20,12 @@ const NAV_COLS = [
     heading: "The Trials",
     duneHead: "Events",
     links: [
-      { label: "Tech Exhibition",     duneLabel: "The Grand Bazaar",      href: "events" },
-      { label: "Hackathon",           duneLabel: "24-Hour Stillsuit",      href: "events" },
-      { label: "Code-A-Thon",         duneLabel: "Worm Rider's Sprint",    href: "events" },
-      { label: "CSS Warriors",        duneLabel: "Shapers of the Dune",    href: "events" },
-      { label: "Bug Bounty",          duneLabel: "Hunt Across the Code",   href: "events" },
-      { label: "Prompt Engineering",  duneLabel: "The Voice of Command",   href: "events" },
+      { label: "Tech Exhibition",     duneLabel: "The Grand Bazaar",      href: "/events" },
+      { label: "Hackathon",           duneLabel: "24-Hour Stillsuit",      href: "/events" },
+      { label: "Code-A-Thon",         duneLabel: "Worm Rider's Sprint",    href: "/events" },
+      { label: "CSS Warriors",        duneLabel: "Shapers of the Dune",    href: "/events" },
+      { label: "Bug Bounty",          duneLabel: "Hunt Across the Code",   href: "/events" },
+      { label: "Prompt Engineering",  duneLabel: "The Voice of Command",   href: "/events" },
     ],
   },
   {

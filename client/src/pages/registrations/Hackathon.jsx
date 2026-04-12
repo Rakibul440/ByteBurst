@@ -1,4 +1,5 @@
 import React from 'react'
+import EventRegistrationPage from '../../components/EventRegistration';
 const event = {
   "name": "Hackathon",
   "duneTitle": "The Maker's Crucible",
@@ -52,7 +53,7 @@ const event = {
 };
 export default function Hackathon() {
   return (
-    <><EventRegistrationPage event={event}/></>
+    <><EventRegistrationPage event={event} buttonName='View Problem Statements' navigatePath='/events/hackathon/problem-statements' /></>
     
   )
 }

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./styles/eventRegistration.css"
+import { useNavigate } from "react-router-dom";
 
 /* ═══════════════════════════════════════════════════════════
    ByteBurst — Event Registration Page
@@ -118,6 +119,8 @@ function validate(form) {
 export default function EventRegistrationPage({
   event = DEFAULT_EVENT,
   onSubmit = null,
+  buttonName = "",
+  navigatePath = ""
 }) {
   const ev = { ...DEFAULT_EVENT, ...event };
 
@@ -125,6 +128,8 @@ export default function EventRegistrationPage({
   const [errors, setErrors]   = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading]   = useState(false);
+
+  const navigate = useNavigate()
 
   const handle = e => {
     const { name, value } = e.target;
@@ -242,6 +247,16 @@ export default function EventRegistrationPage({
               >
                 {loading ? "Consulting the Oracle…" : "Claim Your Place in the Sietch →"}
               </button>
+
+
+            {/* // Problem Statement Button */}
+              { buttonName &&  (<button
+                className="rg-submit"
+                onClick={()=>{navigate(`${navigatePath}`)}}
+              >
+                View Problem Statements
+              </button>)}
+
             </>
           )}
         </div>

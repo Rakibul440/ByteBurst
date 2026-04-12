@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 const DEFAULT_LINKS = [
   { label: "Home",    href: "/",    duneLabel: "The Lore"   },
+  { label: "About",    href: "/about",    duneLabel: "The Myth"   },
   { label: "Events",   href: "/events",   duneLabel: "The Trials" },
   { label: "Organizer", href: "/organizers", duneLabel: "The Lords"   },
   { label: "Team",     href: "/team",     duneLabel: "The House"  },
