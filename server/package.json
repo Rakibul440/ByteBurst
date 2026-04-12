@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "ByteBurst Server",
   "main": "dist/server.js",
-  "type": "module",
   "scripts": {
     "dev": "nodemon --exec tsx server.ts",
     "build": "tsc",
