@@ -10,6 +10,7 @@ import proyal from "../img/prolay.jpeg"
 import rupayan from "../img/rupyan.jpeg"
 import arif from "../img/arif.jpeg"
 import driti from "../img/Driti_R.jpeg"
+import sampreety from "../img/sampritee.jpeg"
 
 
 
@@ -90,7 +91,7 @@ export const MEMBERS = [
         },
       },
         {
-        id: 1,
+        id: 2,
         name: "Driti Ghosh",
         role: "PR Lead",
         duneTitle: "EE, Second Year",
@@ -104,7 +105,7 @@ export const MEMBERS = [
         },
       },
       {
-    id: 5,
+    id: 3,
     name: "Swarnali Talukdar",
     role: "AutoCAD 2D CE Lead",
     duneTitle: "CE, Third Year",
@@ -118,7 +119,7 @@ export const MEMBERS = [
     },
   },
   {
-    id: 6,
+    id: 4,
     name: "Sudam Sarkar",
     role: "AutoCAD 2D CE Lead",
     duneTitle: "CE, Third Year",
@@ -131,10 +132,24 @@ export const MEMBERS = [
       instagram: "https://www.instagram.com/ig_sudam.559?igsh=MTUxOXZrYnYyMDBxcg%3D%3D&utm_source=qr",
     },
   },
+    {
+    id: 13,
+    name: " Sampreety Swarnakar",
+    role: "PR Lead",
+    duneTitle: "ECE, Second Year",
+    img: sampreety,
+    quote: "I must not fear. Fear is the mind-killer. I face the pitch without flinching.",
+    sigil: "⟟",
+    socials: {
+      linkedin: "https://www.linkedin.com/in/sampreety-swarnakar-361129373?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+      github: "",
+      instagram: "https://www.instagram.com/koli.forever?igsh=cHZyMjRhODRjYXYx",
+    },
+  },
      {
-        id: 2,
+        id: 5,
         name: "MD Fahim Akthab",
-        role: "Festival Commander",
+        role: "Code-A-Thon",
         duneTitle: "CSE, Third Year",
         img: fahim,
         quote: "Every pixel is a grain of sand — place it with intention.",
@@ -146,7 +161,7 @@ export const MEMBERS = [
         },
     },
   {
-    id: 3,
+    id: 6,
     name: "Seikh Mahammad Javed",
     role: "Tech Lead",
     duneTitle: "CSE, Third Year",
@@ -160,7 +175,7 @@ export const MEMBERS = [
     },
   },
   {
-    id: 3,
+    id: 7,
     name: "Arif Sekh",
     role: "Prompt Lead",
     duneTitle: "CSE, Third Year",
@@ -174,7 +189,7 @@ export const MEMBERS = [
     },
   },
   {
-    id: 4,
+    id: 8,
     name: "RAJU BISWAS",
     role: "AUTOCAD 2D ME LEAD",
     duneTitle: "ME, THIRD YEAR",
@@ -188,7 +203,7 @@ export const MEMBERS = [
     },
   },
   {
-    id: 7,
+    id: 9,
     name: "Prolay Kayal",
     role: "Tech Exhibition Lead",
     duneTitle: "ECE, Third Year",
@@ -202,7 +217,7 @@ export const MEMBERS = [
     },
   },
   {
-    id: 8,
+    id: 10,
     name: "Rupayan Sarkar",
     role: "Techno Commercial Lead",
     duneTitle: "ECE, Third Year",
@@ -216,7 +231,7 @@ export const MEMBERS = [
     },
   },
   {
-    id: 9,
+    id: 11,
     name: "Rajorsi Sinharay",
     role: "Techno Commercial Lead",
     duneTitle: "ECE, Third Year",
@@ -230,7 +245,7 @@ export const MEMBERS = [
     },
   },
   {
-    id: 9,
+    id: 12,
     name: "Rajorsi Sinharay",
     role: "Techno Commercial Lead",
     duneTitle: "ECE, Third Year",
@@ -243,4 +258,5 @@ export const MEMBERS = [
       instagram: "https://www.instagram.com/rajorshi_sr?igsh=ZnRndzZ3ZDZ4cXg5",
     },
   },
+
 ];

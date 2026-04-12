@@ -81,7 +81,7 @@ export default function Auth() {
           navigate("/verify")
 
         } catch (error) {
-          toast.error(err.message || "The desert rejected your passage. Try again.");
+          toast.error(error.message || "The desert rejected your passage. Try again.");
         }
     }
     
@@ -132,14 +132,14 @@ export default function Auth() {
             {page === "signup" && (
               <>
                 <Field
-                  label="Blood Name"
+                  label="Blood Name [Name]"
                   id="name"
                   placeholder="Your chosen name"
                   value={signup.name}
                   onChange={e => setSignup({ ...signup, name: e.target.value })}
                 />
                 <Field
-                  label="Sietch Number"
+                  label="Sietch Number [Roll No]"
                   id="roll"
                   placeholder="House sigil code"
                   value={signup.roll}
@@ -148,7 +148,7 @@ export default function Auth() {
               </>
             )}
             <Field
-              label="Transmission Frequency"
+              label="Transmission Frequency [Email]"
               id="email"
               type="email"
               placeholder="spice.channel@arrakis.dune"
@@ -158,7 +158,7 @@ export default function Auth() {
                 : setSignup({ ...signup, email: e.target.value })}
             />
             <Field
-              label="Voice Cipher"
+              label="Voice Cipher [Password]"
               id="password"
               placeholder="Your Atreides key"
               value={page === "login" ? login.password : signup.password}

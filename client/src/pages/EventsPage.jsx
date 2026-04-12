@@ -5,6 +5,10 @@ import BugBountyPoster from "../assets/img/BugBountyPoster.png"
 import PromtEngineeringPoster from "../assets/img/PromtEngineeringPoster.png"
 import CodeAThonPoster from "../assets/img/Code-A-ThonPoster.png"
 import CSSWarriorPoster from "../assets/img/CSSWarriorPoster.png"
+import TechnoCOm from "../assets/img/TechnoCommercialPoster.png"
+import TechExhibitionPoster from "../assets/img/TechExhibitionPoster.png"
+import Autocad2DCE from "../assets/img/Autocad2DCE.png"
+import Graphics from "../assets/img/Graphics.jpeg"
 
 
 
@@ -21,6 +25,26 @@ import CSSWarriorPoster from "../assets/img/CSSWarriorPoster.png"
    → Edit `details` array (tag-style info rows)
 ───────────────────────────────────────────────────────── */
 const EVENTS = [
+
+    {
+    id: 1,
+    name: "Tech Exhibition",
+    duneTitle: "The Grand Bazaar of Arrakis",
+    sigil: "⟁",
+    category: "Exhibition",
+    poster: TechExhibitionPoster,
+    tagline: "Display what the desert forged within you.",
+    quote: "Every invention begins as a whisper in the dark. Here, you shout it to the stars.",
+    quoteAttr: "— Guild Navigator's Codex",
+    details: [
+      { icon: "◈", label: "Mode",     value: "Individual / Team" },
+      { icon: "◈", label: "Duration", value: "Full Day" },
+      { icon: "◈", label: "Round",    value: "Single Presentation" },
+      { icon: "◈", label: "Prize",    value: "Spice of Glory" },
+    ],
+    desc: "Unveil your innovations before the council of the sietch. From hardware prototypes to software marvels — if you built it, the desert shall witness it.",
+    registerLink: "tech-exhibition",
+  },
   {
     id: 8,
     name: "Prompt Engineering",
@@ -41,31 +65,12 @@ const EVENTS = [
     registerLink: "prompt-engineering",
   },
   {
-    id: 1,
-    name: "Tech Exhibition",
-    duneTitle: "The Grand Bazaar of Arrakis",
-    sigil: "⟁",
-    category: "Exhibition",
-    poster: "https://placehold.co/500x700/0E0C08/C8891A?text=Tech+Exhibition",
-    tagline: "Display what the desert forged within you.",
-    quote: "Every invention begins as a whisper in the dark. Here, you shout it to the stars.",
-    quoteAttr: "— Guild Navigator's Codex",
-    details: [
-      { icon: "◈", label: "Mode",     value: "Individual / Team" },
-      { icon: "◈", label: "Duration", value: "Full Day" },
-      { icon: "◈", label: "Round",    value: "Single Presentation" },
-      { icon: "◈", label: "Prize",    value: "Spice of Glory" },
-    ],
-    desc: "Unveil your innovations before the council of the sietch. From hardware prototypes to software marvels — if you built it, the desert shall witness it.",
-    registerLink: "tech-exhibition",
-  },
-  {
     id: 2,
     name: "Graphics Design",
     duneTitle: "The Vision Weavers' Trial",
     sigil: "✦",
     category: "Creative",
-    poster: "https://placehold.co/500x700/0E0C08/C8891A?text=Graphics+Design",
+    poster: Graphics,
     tagline: "Shape perception. Bend light. Command the eye.",
     quote: "The Fremen drew maps with charcoal on stone. You draw worlds with light itself.",
     quoteAttr: "— Bene Gesserit Art Doctrine",
@@ -103,7 +108,7 @@ const EVENTS = [
     duneTitle: "Architecture of the Sietch",
     sigil: "⬡",
     category: "Design",
-    poster: "https://placehold.co/500x700/0E0C08/C8891A?text=Autocad+ME+%2F+CE",
+    poster: Autocad2DCE,
     tagline: "Engineer the impossible. Draft the eternal.",
     quote: "The Fremen built Sietch Tabr not with faith alone, but with precision and geometry.",
     quoteAttr: "— Stilgar's Field Notes on Architecture",
@@ -122,7 +127,7 @@ const EVENTS = [
     duneTitle: "The Spice Merchant's Gauntlet",
     sigil: "❋",
     category: "Business",
-    poster: "https://placehold.co/500x700/0E0C08/C8891A?text=Techno+Commercial",
+    poster: TechnoCOm,
     tagline: "Sell the idea. Command the market. Rule the spice.",
     quote: "He who controls the spice controls the universe — but first, he must convince the council.",
     quoteAttr: "— CHOAM Trading Doctrine, Article I",
