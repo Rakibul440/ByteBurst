@@ -1,14 +1,21 @@
 {
   "compilerOptions": {
-    "module": "NodeNext", // ✅ ESM for Node
-    "moduleResolution": "nodenext",
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "target": "ES2023",
     "strict": true,
     "esModuleInterop": true,
-    "skipLibCheck": true
-  }
+    "ignoreDeprecations": "6.0",
+    "rootDir": ".",
+    "outDir": "./dist"
+  },
+  "include": [
+    "./**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }
 // {
 //   "compilerOptions": {
