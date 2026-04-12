@@ -1,6 +1,6 @@
-import { transporter } from "../config/mail.config";
+import { transporter } from "../config/mail.config.js";
 import { otpTemplate } from "../templates/otp.template";
-import { otpTemplate_2 } from "../templates/otp.template-2";
+import { otpTemplate_2 } from "../templates/otp.template-2.js";
 
 export const sendmail = async (code: string, email: string) => {
     try {

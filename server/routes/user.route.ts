@@ -1,6 +1,6 @@
 import express from "express"
-import { getProfile, updateProfile } from "../controllers/user.controller"
-import { protect } from "../middlewares/protect.middleware"
+import { getProfile, updateProfile } from "../controllers/user.controller.js"
+import { protect } from "../middlewares/protect.middleware.js"
 
 const userRouter = express.Router()
 

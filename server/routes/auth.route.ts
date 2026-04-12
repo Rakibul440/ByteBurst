@@ -1,6 +1,6 @@
 import express from "express";
-import { login, logout, signup, verifyOtp } from "../controllers/auth.controller";
-import { protect } from "../middlewares/protect.middleware";
+import { login, logout, signup, verifyOtp } from "../controllers/auth.controller.js";
+import { protect } from "../middlewares/protect.middleware.js";
 
 const authRouter = express.Router()
 

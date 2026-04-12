@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
-import { prisma } from "../lib/prisma";
+import { prisma } from "../lib/prisma.js";
 
-import { generateOTP } from "../utils/otp.util";
-import { sendmail } from "../services/mail.service";
-import { compareCredential, hashCredential } from "../utils/hash.util";
-import { generateAccessToken, generateRefreshToken } from "../utils/token.util";
+import { generateOTP } from "../utils/otp.util.js";
+import { sendmail } from "../services/mail.service.js";
+import { compareCredential, hashCredential } from "../utils/hash.util.js";
+import { generateAccessToken, generateRefreshToken } from "../utils/token.util.js";
 
 // signup
 export const signup = async (req: Request, res: Response) => {

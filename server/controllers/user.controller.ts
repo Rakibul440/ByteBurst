@@ -1,4 +1,4 @@
-import { prisma } from "../lib/prisma";
+import { prisma } from "../lib/prisma.js";
 import { StatusCodes } from "http-status-codes"
 import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
