@@ -5,7 +5,7 @@ import { protect } from "../middlewares/protect.middleware.js"
 const userRouter = express.Router()
 
 userRouter.get("/profile/:username", protect, getProfile)
-userRouter.put("/update-profile", protect, updateProfile)
+userRouter.patch("/update-profile", protect, updateProfile)
 
 
 export { userRouter }

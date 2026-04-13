@@ -137,12 +137,14 @@ export const verifyOtp = async (req: Request, res: Response) => {
         const ipAddess = Array.isArray(forwarded) ? forwarded[0] : forwarded || req.socket.remoteAddress;
         const userAgent = req.headers["user-agent"]
         const accessToken = generateAccessToken({
+            userId: user.id,
             name: user.name,
             email: user.email,
             roll: user.roll
         })
 
         const refreshToken = generateRefreshToken({
+            userId: user.id,
             email: user.email
         })
 

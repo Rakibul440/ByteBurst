@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./styles/profile.css"
+import { toast } from "sonner";
 
 /* ═══════════════════════════════════════════════════════════
    ByteBurst — User Profile Page
@@ -157,6 +158,9 @@ export default function UserProfile({
   const [saving,  setSaving]  = useState(false);
   const [saved,   setSaved]   = useState(false);
 
+  const { updateProfile} = useAuth()
+
+
   const [draft, setDraft] = useState({
     name:       u.name       || "",
     dept:       u.dept       || "",
@@ -170,15 +174,27 @@ export default function UserProfile({
     setDraft(d => ({ ...d, [name]: value }));
   };
 
-  const handleSave = async () => {
-    setSaving(true);
+const handleSave = async () => {
+  setSaving(true);
+
+  try {
     await new Promise(r => setTimeout(r, 800));
-    if (onUpdate) onUpdate(draft);
-    setSaving(false);
+
+    // console.log(draft)
+    await updateProfile(draft);
+
+    toast.success("Updated successfully");
     setEditing(false);
     setSaved(true);
     setTimeout(() => setSaved(false), 3000);
-  };
+
+  } catch (error) {
+    console.error(error);
+    toast.error(error?.message || "Failed to update");
+  } finally {
+    setSaving(false); // ✅ always runs
+  }
+};
 
   const handleCancel = () => {
     setDraft({

@@ -117,6 +117,27 @@ export function AuthProvider({ children }) {
     localStorage.removeItem("user");
   }, []);
 
+  // ---------------- Update Profile ----------------
+  const updateProfile = useCallback(
+  async (data) => {
+    setError(null);
+
+    try {
+      const { user } = await authService.updateUserProfile(data);
+
+      setAuthenticated(user);
+      setFlow("idle");
+
+      return { success: true, user };
+    } catch (error) {
+      setError(error.message);
+      setFlow("idle");
+      throw error;
+    }
+  },
+  [setAuthenticated]
+);
+
   // ---------------- HELPERS ----------------
   const isAuthenticated = status === "authenticated";
   const isLoading = status === "idle"; // 👈 important fix
@@ -143,6 +164,7 @@ export function AuthProvider({ children }) {
     verifyOtp,
     logout,
     clearError,
+    updateProfile
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

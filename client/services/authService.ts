@@ -24,14 +24,11 @@ export const authService = {
 
     },
 
-    updateUserProfile: async (payload: any) => {
-        try {
-            const response = await api.put("/user/update-profile")
-            return response.data
-        } catch (error: any) {
-            toast.error(error?.response?.data?.message || error.message);
-            console.log(error)
-        }
+    updateUserProfile: async (payload: Object) => {
+
+        const response = await api.patch("/user/update-profile", payload)
+        return response.data
+
     }
 
 }
