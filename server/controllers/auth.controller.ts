@@ -340,3 +340,119 @@ export const logout = async (req: Request, res: Response) => {
     }
 }
 
+
+// signup
+export const mysignUp = async (req: Request, res: Response) => {
+    try {
+        const { name, roll, email, password } = req.body;
+
+        const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/;
+        const passwordLength = password.length > 4;
+
+        const rollRegex = /^349\d{8}$/
+
+        // check all field
+        if (!name || !roll || !email || !password) return res.status(StatusCodes.NOT_FOUND).json({ message: "Enter all the fields" })
+
+        // check password length
+        if (!passwordLength) return res.status(StatusCodes.NOT_FOUND).json({ message: ".Password is too small" })
+
+        // check email regex
+        if (!emailRegex.test(email)) return res.status(StatusCodes.NOT_ACCEPTABLE).json({ message: "Enter correct email" })
+
+        // check roll regex
+        if (!rollRegex.test(roll)) return res.status(StatusCodes.NOT_ACCEPTABLE).json({ message: "Enter correct roll" })
+
+        // find user exist or not
+        const user = await prisma.user.findUnique({
+            where: { email: email, roll: roll }
+        })
+
+
+        if (user) return res.status(StatusCodes.CONFLICT).json({
+            message: "User already exist"
+        })
+
+        // hashed password
+        const hashed = await hashCredential(password)
+
+        // create username
+        const username = "@" + email.split('@')[0] + '-' + roll.slice(-8)
+
+        // create new user
+        const newUser = await prisma.user.create({
+            data: {
+                name: name,
+                username: username.toLowerCase(),
+                email: email,
+                roll: roll,
+                password: hashed,
+                isEmailVerified: true,
+                isActive: true
+            }
+        })
+
+        if (!newUser) return res.status(StatusCodes.NOT_FOUND).json({ message: "Failed to register" })
+
+        // save token at Session
+        const forwarded = req.headers["x-forwarded-for"]
+        const ipAddess = Array.isArray(forwarded) ? forwarded[0] : forwarded || req.socket.remoteAddress;
+        const userAgent = req.headers["user-agent"]
+        const accessToken = generateAccessToken({
+            userId: newUser.id,
+            name: newUser.name,
+            email: newUser.email,
+            roll: newUser.roll
+        })
+
+        const refreshToken = generateRefreshToken({
+            userId: newUser.id,
+            email: newUser.email
+        })
+
+        await prisma.session.create({
+            data: {
+                userId: newUser.id,
+                refreshToken: refreshToken,
+                ipAddress: ipAddess,
+                userAgent: userAgent
+            }
+        })
+
+        const options = {
+            httpOnly: true,
+            secure: true,
+            sameSite: "strict" as const,
+            maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
+        }
+
+
+        return res
+            .status(StatusCodes.CREATED)
+            .cookie("refreshToken", refreshToken, options)
+            .cookie("accessToken", accessToken, options)
+            .cookie("username", newUser.username, options)
+            .json({
+                message: "Registered Successfully",
+                user: {
+                    username: newUser.username,
+                    name: newUser.name,
+                    roll: newUser.roll,
+                    role: newUser.role,
+                    email: newUser.email,
+                    dept: newUser.dept,
+                    year: newUser.year,
+                    sex: newUser.sex,
+                    whatsAppNo: newUser.whatsAppNo,
+                    createdAt: newUser.createdAt,
+                    updatedAt: newUser.updatedAt,
+                    isActive: newUser.isActive,
+                    ifEmailVerified: newUser.isEmailVerified
+                }
+            })
+
+    } catch (error: any) {
+        console.log(error.code || error.message)
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ message: error.message })
+    }
+}

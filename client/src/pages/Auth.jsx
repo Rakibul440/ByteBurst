@@ -22,7 +22,73 @@ export default function Auth() {
   console.log(isAuthenticated)
 
 
-  const handleSubmit = async (e) => {
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault()
+  //   setSubmitted(true);
+
+  //   if(page === 'login'){
+
+  //     if (!login.email.trim()) return toast.error("Transmission frequency is required.");
+  //     if (!login.password.trim()) return toast.error("Voice cipher is required.");
+
+  //     const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/;
+  //     if (!emailRegex.test(login.email)) return toast.error("Enter correct email")
+
+  //     try {
+
+  //       const result = await loginFn({
+  //         email : login.email,
+  //         password : login.password
+  //       })
+
+  //       if(result.reason ==="Otp_Required"){
+  //         navigate("/verify");
+  //         return
+  //       }
+  //       localStorage.setItem("user", JSON.stringify(result.user));
+
+  //       toast.success("Successfully Logged in")
+  //       setSubmitted(false)
+        
+  //       navigate(`/profile/${result.user.username}`)
+
+  //     } catch (error) {
+  //       console.log(error.message)
+  //       toast.error("The cipher was not recognised. The desert does not forgive.")
+  //     }
+  //   }
+  //   else if(page === 'signup'){
+  //       // Basic client-side validation
+  //       if (!signup.name.trim())     return toast.error("Blood name is required.");
+  //       if (!signup.roll.trim())     return toast.error("Sietch number is required.");
+  //       if (!signup.email.trim())    return toast.error("Transmission frequency is required.");
+  //       if (signup.password.length < 4) return toast.error("Voice cipher must be at least 4 characters.");
+        
+  //       const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/;
+  //       const rollRegex = /^349\d{8}$/
+  //       if (!emailRegex.test(signup.email)) return toast.error("Enter correct email")
+  //       if (!rollRegex.test(signup.roll)) return toast.error("Enter correct roll")
+
+  //       try {
+  //         await signupFn({
+  //           name:     signup.name.trim(),
+  //           roll:     signup.roll.trim(),
+  //           email:    signup.email.trim(),
+  //           password: signup.password,
+  //         })
+  //         localStorage.setItem("verifyEmail", signup.email);
+  //         toast.success("Enter Otp to verify")
+  //         navigate("/verify")
+
+  //       } catch (error) {
+  //         toast.error(error.message || "The desert rejected your passage. Try again.");
+  //       }
+  //   }
+    
+  // };
+
+
+    const handleSubmit = async (e) => {
     e.preventDefault()
     setSubmitted(true);
 
@@ -78,15 +144,17 @@ export default function Auth() {
           })
           localStorage.setItem("verifyEmail", signup.email);
           toast.success("Enter Otp to verify")
-          navigate("/verify")
+          const username = "@" + signup.email.split('@')[0] + '-' + roll.slice(-8)
+
+          navigate(`/profile/${username}`)
 
         } catch (error) {
+          console.log(error.message)
           toast.error(error.message || "The desert rejected your passage. Try again.");
         }
     }
     
   };
-
 
   const switchPage = (p) => {
     setPage(p);

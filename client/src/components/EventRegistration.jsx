@@ -127,8 +127,7 @@ const handleSubmit = async () => {
   }
 
   if (!user.roll || !user.dept || !user.year || !user.sex) {
-    toast.warning("Update Your Credentials first");
-    return;
+    toast.warning(" You should Update Your Credentials!!");
   }
 
   if (

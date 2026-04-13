@@ -38,23 +38,44 @@ export function AuthProvider({ children }) {
     setError(null);
   }, []);
 
-  // ---------------- SIGNUP ----------------
-  const signupFn = useCallback(async (payload) => {
-    setFlow("registering");
-    setError(null);
+  // // ---------------- SIGNUP ----------------
+  // const signupFn = useCallback(async (payload) => {
+  //   setFlow("registering");
+  //   setError(null);
 
-    try {
-      await authService.signup(payload);
-      pendingEmail.current = payload.email;
-      setFlow("otp");
+  //   try {
+  //     await authService.signup(payload);
+  //     pendingEmail.current = payload.email;
+  //     setFlow("otp");
 
-      return { success: true };
-    } catch (error) {
-      setError(error.message);
-      setFlow("idle");
-      throw error;
-    }
-  }, []);
+  //     return { success: true };
+  //   } catch (error) {
+  //     setError(error.message);
+  //     setFlow("idle");
+  //     throw error;
+  //   }
+  // }, []);
+
+    const signupFn = useCallback(
+    async (payload) => {
+      setFlow("logging_in");
+      setError(null);
+
+      try {
+        const { user } = await authService.signup(payload);
+
+        setAuthenticated(user);
+        setFlow("idle");
+
+        return { success: true, user };
+      } catch (error) {
+        setError(error.message);
+        setFlow("idle");
+        throw error;
+      }
+    },
+    [setAuthenticated]
+  );
 
   // ---------------- VERIFY OTP ----------------
   const verifyOtp = useCallback(async (otp) => {
