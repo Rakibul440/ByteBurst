@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "./styles/profile.css"
 import { toast } from "sonner";
+import { useAuth } from "../../hooks/useAuth";
+
 
 /* ═══════════════════════════════════════════════════════════
    ByteBurst — User Profile Page
