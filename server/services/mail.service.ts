@@ -23,35 +23,19 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 // 
 
-// export const sendmail = async (code: string, email: string) => {
-//     try {
-//         await resend.emails.send({
-//             from: 'onboarding@resend.dev',
-//             to: email,
-//             subject: 'OTP Verification',
-//             html: otpTemplate_2(code),
-//         });
-//     } catch (error: any) {
-//         console.error("Error while sending mail:", error);
-//         throw error
-//     }
-// }
-
-
-import { sendEmail } from '../config/bravomail.js';
-
 export const sendmail = async (code: string, email: string) => {
     try {
-        await sendEmail({
+        await resend.emails.send({
+            from: 'ByteBurst <noreply@byte-burst.in>',
             to: email,
-            subject: 'ByteBurst OTP Verification',
+            subject: 'OTP Verification',
             html: otpTemplate_2(code),
         });
-
     } catch (error: any) {
         console.error("Error while sending mail:", error);
         throw error
     }
 }
+
 
 
