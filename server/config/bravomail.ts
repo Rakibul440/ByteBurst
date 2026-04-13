@@ -1,21 +1,30 @@
-// mailer.js
-import * as Brevo from '@getbrevo/brevo';
+import axios from 'axios';
 
-const apiInstance = new Brevo.TransactionalEmailsApi();
-apiInstance.authentications['apiKey'].apiKey = process.env.BREVO_API_KEY;
+interface MailOptions {
+  to: string;
+  subject: string;
+  html: string;
+}
 
-export const sendEmail = async ({ to, subject, html }) => {
-  const sendSmtpEmail = new Brevo.SendSmtpEmail();
-
-  sendSmtpEmail.subject = subject;
-  sendSmtpEmail.htmlContent = html;
-  sendSmtpEmail.sender = { name: 'ByteBurst', email: process.env.MAIL_USER };
-  sendSmtpEmail.to = [{ email: to }];
-
+export const sendEmail = async ({ to, subject, html }: MailOptions) => {
   try {
-    const result = await apiInstance.sendTransacEmail(sendSmtpEmail);
-    console.log('Mail sent:', result);
-    return result;
+    const result = await axios.post(
+      'https://api.brevo.com/v3/smtp/email',
+      {
+        sender: { name: 'ByteBurst', email: process.env.MAIL_USER },
+        to: [{ email: to }],
+        subject,
+        htmlContent: html,
+      },
+      {
+        headers: {
+          'api-key': process.env.BREVO_API_KEY!,
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+    console.log('Mail sent:', result.data);
+    return result.data;
   } catch (err) {
     console.error('Mail error:', err);
     throw err;
