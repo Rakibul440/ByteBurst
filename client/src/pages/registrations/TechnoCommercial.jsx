@@ -8,7 +8,7 @@ const event = {
   "tagline": "Every deal is a desert crossing. Only the prepared reach the other side.",
   "quote": "The Guild does not move without profit. Neither should you — but the profit must be earned, not seized.",
   "quoteAttr": "— CHOAM Merchant Accord, Article III",
-  "posterImg": "https://placehold.co/500x700/0E0C08/C8891A?text=Bug-Bunty",
+  "posterImg": "https://placehold.co/500x700/0E0C08/C8891A?text=Techno-Commercial",
   "rules": [
     {
       "title": "Eligibility",

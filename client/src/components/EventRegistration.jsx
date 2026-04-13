@@ -133,7 +133,6 @@ const handleSubmit = async () => {
 
   if (
     form.roll !== user.roll ||
-    form.name !== user.name ||
     form.dept !== user.dept ||
     form.year !== user.year
   ) {

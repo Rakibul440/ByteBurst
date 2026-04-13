@@ -8,7 +8,7 @@ const event = {
   "tagline": "Logic is a weapon. The fastest mind commands the stillsuit.",
   "quote": "A Mentat who hesitates has already computed the wrong answer. Speed and precision are one.",
   "quoteAttr": "— House Atreides Combat Manual",
-  "posterImg": "https://placehold.co/500x700/0E0C08/C8891A?text=Bug-Bunty",
+  "posterImg": "https://placehold.co/500x700/0E0C08/C8891A?text=Tech-Quiz",
   "rules": [
     {
       "title": "Eligibility",

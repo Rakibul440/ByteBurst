@@ -7,7 +7,7 @@ const event = {
   "tagline": "Twenty-four hours. One problem. No water breaks for the weak.",
   "quote": "In the deep desert, survival is not a product of tools — it is a product of the mind that wields them.",
   "quoteAttr": "— Stilgar's Address to New Riders",
-  "posterImg": "https://placehold.co/500x700/0E0C08/C8891A?text=Bug-Bunty",
+  "posterImg": "https://placehold.co/500x700/0E0C08/C8891A?text=Hackathon",
   "rules": [
     {
       "title": "Eligibility",

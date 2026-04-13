@@ -7,6 +7,7 @@ const event = {
   "category": "Exhibition",
   "tagline": "Display your ingenuity. The sietch remembers those who build.",
   "quote": "The maker does not boast — the maker shows. Let your creation speak louder than the desert wind.",
+  "posterImg": "https://placehold.co/500x700/0E0C08/C8891A?text=Tech-Exhibition",
   "quoteAttr": "— Bene Gesserit Archive, Vol. IV",
   "rules": [
     {

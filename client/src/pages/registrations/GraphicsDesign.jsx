@@ -8,7 +8,7 @@ const event = {
   "tagline": "Every line is a spice trail. Every colour, a mirage you must earn.",
   "quote": "A map of Arrakis drawn without precision is not a map — it is a death sentence. Design accordingly.",
   "quoteAttr": "— Fremen Wayfinder's Codex",
-  "posterImg": "https://placehold.co/500x700/0E0C08/C8891A?text=Bug-Bunty",
+  "posterImg": "https://placehold.co/500x700/0E0C08/C8891A?text=Graphics-Design",
   "rules": [
     {
       "title": "Eligibility",

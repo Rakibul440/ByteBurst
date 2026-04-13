@@ -8,7 +8,7 @@ const event = {
   "tagline": "Words are power. The right command bends the machine to your will.",
   "quote": "Paul did not ask the universe for mercy — he commanded it with precision. Your prompts must do the same.",
   "quoteAttr": "— Bene Gesserit Oral Tradition, Cycle VII",
-  "posterImg": "https://placehold.co/500x700/0E0C08/C8891A?text=Bug-Bunty",
+  "posterImg": "https://placehold.co/500x700/0E0C08/C8891A?text=Prompt-Engineering",
   "rules": [
     {
       "title": "Eligibility",

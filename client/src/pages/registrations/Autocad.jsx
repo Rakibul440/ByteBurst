@@ -8,7 +8,7 @@ const event = {
   tagline: "Precision is survival. Every millimetre a matter of life beneath the dunes.",
   quote: "The sietch was not carved by passion — it was carved by those who measured twice and drew once.",
   quoteAttr: "— Fremen Engineering Proverb",
-  posterImg: "https://placehold.co/500x700/0E0C08/C8891A?text=Bug-Bunty",
+  posterImg: "https://placehold.co/500x700/0E0C08/C8891A?text=AutoCad",
   rules: [
     {
       title: "Eligibility",

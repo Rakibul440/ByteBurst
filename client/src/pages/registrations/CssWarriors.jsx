@@ -8,7 +8,7 @@ const event = {
   "tagline": "Pixels are your sandstone. Code is your crysknife. Shape the unseen.",
   "quote": "The desert does not become beautiful by accident — it is shaped by wind, time, and the hands of those who dare.",
   "quoteAttr": "— Fremen Weavers' Saying",
-  "posterImg": "https://placehold.co/500x700/0E0C08/C8891A?text=Bug-Bunty",
+  "posterImg": "https://placehold.co/500x700/0E0C08/C8891A?text=CSS-Warriors",
   "rules": [
     {
       "title": "Eligibility",
