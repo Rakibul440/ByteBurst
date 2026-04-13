@@ -43,7 +43,7 @@ const EVENTS = [
       { icon: "◈", label: "Prize",    value: "Spice of Glory" },
     ],
     desc: "Unveil your innovations before the council of the sietch. From hardware prototypes to software marvels — if you built it, the desert shall witness it.",
-    registerLink: "tech-exhibition",
+    registerLink: "e3",
   },
   {
     id: 8,
@@ -62,7 +62,7 @@ const EVENTS = [
       { icon: "◈", label: "Judged",   value: "Output Quality" },
     ],
     desc: "Craft prompts that extract the impossible from large language models. The one who bends the machine most elegantly — using fewest words to greatest effect — earns mastery.",
-    registerLink: "prompt-engineering",
+    registerLink: "e8",
   },
   {
     id: 2,
@@ -81,7 +81,7 @@ const EVENTS = [
       { icon: "◈", label: "Theme",    value: "Revealed on Day" },
     ],
     desc: "Receive the theme at dawn and conjure a masterpiece before sunset. The one whose design silences the room shall be named keeper of the visual arts.",
-    registerLink: "graphics-design",
+    registerLink: "e2",
   },
   {
     id: 3,
@@ -100,7 +100,7 @@ const EVENTS = [
       { icon: "◈", label: "Format",   value: "MCQ + Rapid Fire" },
     ],
     desc: "Three rounds of ruthless elimination. The unprepared fall in the first. Only the sharpest Mentats advance to the final chamber of knowledge.",
-    registerLink: "tech-apti-quiz",
+    registerLink: "e5",
   },
   {
     id: 4,
@@ -119,7 +119,7 @@ const EVENTS = [
       { icon: "◈", label: "Branch",   value: "ME & CE Tracks" },
     ],
     desc: "Receive your engineering brief and render a design that would make the desert engineers weep with admiration. Precision is the weapon. AutoCAD is the blade.",
-    registerLink: "autocad",
+    registerLink: "e6",
   },
   {
     id: 5,
@@ -138,7 +138,7 @@ const EVENTS = [
       { icon: "◈", label: "Duration", value: "10 Min Pitch" },
     ],
     desc: "Blend technical depth with commercial cunning. Present a tech-business solution to the council. The strongest pitch — not the loudest voice — claims the throne.",
-    registerLink: "techno-commercial",
+    registerLink: "e1",
   },
   {
     id: 6,
@@ -157,7 +157,7 @@ const EVENTS = [
       { icon: "◈", label: "Language", value: "Any" },
     ],
     desc: "A relentless sprint of algorithmic problems. Speed matters. Accuracy commands respect. The coder who rides every problem without falling shall be named Champion of the Code.",
-    registerLink: "code-A-Thon",
+    registerLink: "e4",
   },
   {
     id: 7,
@@ -176,7 +176,7 @@ const EVENTS = [
       { icon: "◈", label: "Judging",  value: "Demo + Code Review" },
     ],
     desc: "Twenty-four hours. One problem. Infinite solutions. From ideation to deployment — the team that builds the most complete, elegant, and impactful product wins the spice.",
-    registerLink: "hackathon",
+    registerLink: "e69",
   },
   {
     id: 9,
@@ -195,7 +195,7 @@ const EVENTS = [
       { icon: "◈", label: "Scoring",  value: "Per Bug Severity" },
     ],
     desc: "Prowl through a deliberately broken codebase. Find vulnerabilities, logic errors, and hidden traps. Points awarded by severity. The sharpest eye claims the highest bounty.",
-    registerLink: "bug-bounty",
+    registerLink: "e143",
   },
   {
     id: 10,
@@ -214,7 +214,7 @@ const EVENTS = [
       { icon: "◈", label: "Task",     value: "Pixel-perfect Render" },
     ],
     desc: "Receive a design mockup. Recreate it using pure CSS — no frameworks, no shortcuts. The closest pixel-perfect render wins. Beauty and precision are the only currency.",
-    registerLink: "css-warriors",
+    registerLink: "e67",
   },
 ];
 
@@ -237,7 +237,6 @@ function EventCard({ event, index }) {
   const isFlipped = index % 2 === 1;
   const catColor  = CATEGORY_COLORS[event.category] || "#C8891A";
 
-    const [authenticated, setAuthenticated] = useState(true)
 
 
   return (
@@ -297,11 +296,11 @@ function EventCard({ event, index }) {
 
         {/* Buttons */}
         <div className="ev-btns">
-          <Link data-dune-text="ENTER THE SIETCH" data-dune-hover="true" to={authenticated ? `${event.registerLink}` : "/auth"} className="ev-btn-register">
+          <Link data-dune-text="ENTER THE SIETCH" data-dune-hover="true" to={event.registerLink} className="ev-btn-register">
             Seek Entry &nbsp;→
           </Link>
           <button data-dune-text="ENTER THE SIETCH" data-dune-hover="true" className="ev-btn-details">
-          <Link to={authenticated ? `${event.registerLink}` : "/auth"} className="">
+          <Link to={event.registerLink} className="">
             Learn More &nbsp;→
           </Link> </button>
            

@@ -81,16 +81,16 @@ export default function App() {
 
 
         {/* Registration page */}
-        <Route path="/events/code-a-thon" element={<CodeOThon/>} />
-        <Route path="/events/tech-exhibition" element={<TechExhibition/>} />
-        <Route path="/events/graphics-design" element={<GraphicsDesign/>} />
-        <Route path="/events/tech-apti-quiz" element={<TechAptiQuiz/>} />
-        <Route path="/events/autocad" element={<Autocad/>} />
-        <Route path="/events/techno-commercial" element={<TechnoCommercial/>} />
-        <Route path="/events/hackathon" element={<Hackathon/>} />
-        <Route path="/events/prompt-engineering" element={<PromptEngineering/>} />
-        <Route path="/events/bug-bounty" element={<BugBunty/>} />
-        <Route path="/events/css-warriors" element={<CssWarriors/>} />
+        <Route path="/events/:eventId" element={<CodeOThon/>} />
+        <Route path="/events/:eventId" element={<TechExhibition/>} />
+        <Route path="/events/:eventId" element={<GraphicsDesign/>} />
+        <Route path="/events/:eventId" element={<TechAptiQuiz/>} />
+        <Route path="/events/:eventId" element={<Autocad/>} />
+        <Route path="/events/:eventId" element={<TechnoCommercial/>} />
+        <Route path="/events/:eventId" element={<Hackathon/>} />
+        <Route path="/events/:eventId" element={<PromptEngineering/>} />
+        <Route path="/events/:eventId" element={<BugBunty/>} />
+        <Route path="/events/:eventId" element={<CssWarriors/>} />
 
         
       </Routes>

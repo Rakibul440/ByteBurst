@@ -1,36 +1,9 @@
 import { useState } from "react";
 import "./styles/eventRegistration.css"
-import { useNavigate } from "react-router-dom";
-
-/* ═══════════════════════════════════════════════════════════
-   ByteBurst — Event Registration Page
-   DUNE Cinematic Theme · Fully Reusable · No Navbar · No Cursor
-   All CSS prefixed  rg-  (zero conflicts with other pages)
-
-   ─── USAGE ───────────────────────────────────────────────
-   <EventRegistrationPage
-     event={{
-       name:       "Code-A-Thon",
-       duneTitle:  "The Worm Rider's Sprint",
-       category:   "Coding",
-       tagline:    "Ride the worm. Solve the storm.",
-       quote:      "The sandworm does not wait for the rider to be ready.",
-       quoteAttr:  "— Fedaykin Combat Code Manual",
-       posterImg:  "https://your-poster-url.com/poster.jpg",
-       rules: [
-         { title: "Eligibility",   body: "Open to all enrolled students of the institution." },
-         { title: "Team Size",     body: "Individual participation only." },
-         { title: "Duration",      body: "2 hours. No extensions granted." },
-         { title: "Language",      body: "Any programming language permitted." },
-         { title: "Devices",       body: "Personal laptops only. No internet access." },
-         { title: "Judging",       body: "Based on correctness, efficiency, and code elegance." },
-         { title: "Plagiarism",    body: "Zero tolerance. Immediate disqualification." },
-         { title: "Final Call",    body: "Organiser's decision is final and binding." },
-       ],
-     }}
-     onSubmit={(formData) => console.log(formData)}
-   />
-═══════════════════════════════════════════════════════════ */
+import { useNavigate, useParams } from "react-router-dom";
+import {useAuth} from "../../hooks/useAuth"
+import { api } from "../../config/axios";
+import { toast } from "sonner";
 
 /* ─── Default event (shown when no props passed) ─────────── */
 const DEFAULT_EVENT = {
@@ -56,7 +29,7 @@ const DEFAULT_EVENT = {
 };
 
 const YEARS  = ["FIRST", "SECOND", "THIRD", "FINAL"];
-const DEPTS  = ["CSE", "ECE", "CE", "ME","CE"];
+const DEPTS  = ["CSE", "ECE", "EE", "ME","CE"];
 
 
 /* ─── Field Component ────────────────────────────────────── */
@@ -129,7 +102,10 @@ export default function EventRegistrationPage({
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading]   = useState(false);
 
+  const {eventId} = useParams()
   const navigate = useNavigate()
+  const {isAuthenticated, user ,setAuthenticated} = useAuth()
+
 
   const handle = e => {
     const { name, value } = e.target;
@@ -137,15 +113,63 @@ export default function EventRegistrationPage({
     if (errors[name]) setErrors(er => ({ ...er, [name]: "" }));
   };
 
-  const handleSubmit = async () => {
-    const errs = validate(form);
-    if (Object.keys(errs).length) { setErrors(errs); return; }
-    setLoading(true);
-    await new Promise(r => setTimeout(r, 900)); // simulate API
-    if (onSubmit) onSubmit({ ...form, event: ev.name });
-    setLoading(false);
-    setSubmitted(true);
-  };
+const handleSubmit = async () => {
+  const errs = validate(form);
+
+  if (Object.keys(errs).length) {
+    setErrors(errs);
+    return;
+  }
+
+  if (!isAuthenticated) {
+    navigate("/auth");
+    return;
+  }
+
+  if (!user.roll || !user.dept || !user.year || !user.sex) {
+    toast.warning("Update Your Credentials first");
+    return;
+  }
+
+  if (
+    form.roll !== user.roll ||
+    form.name !== user.name ||
+    form.dept !== user.dept ||
+    form.year !== user.year
+  ) {
+    toast.warning("Enter correct credentials");
+    return;
+  }
+
+  setLoading(true);
+
+  try {
+    const response = await api.post(
+      `/registration/eventRegister/${eventId}`
+    );
+
+    if (!response?.data) {
+      toast.error(response?.data?.message || "Failed to register");
+      return;
+    }
+
+    await new Promise((r) => setTimeout(r, 900));
+
+    if (onSubmit) {
+      onSubmit({ ...form, event: ev.name });
+    }
+
+    setSubmitted(true); 
+    setAuthenticated(response?.data?.registeredUser);
+    localStorage.setItem("eventId", eventId);
+    toast.success("Yehhhhhhhhhh You Got it!!");
+  } catch (error) {
+    console.log(error.message);
+    toast.error(error.message || "Something went wrong. Try again.");
+  } finally {
+    setLoading(false); 
+  }
+};
 
   return (
     <div className="rg-root">
@@ -192,7 +216,7 @@ export default function EventRegistrationPage({
             /* ── Success screen ── */
             <div className="rg-success">
               <span className="rg-success-sigil">⟁</span>
-              <h2 className="rg-success-title">Registration hasn't strated yet</h2>
+              <h2 className="rg-success-title">Passage Granted</h2>
               <p className="rg-success-body">
                 "You have been accepted into the trial. The desert remembers
                 every name that walks its sands with purpose."
