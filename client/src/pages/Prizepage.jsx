@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./styles/prize.css"
-
+import techonicks from "../assets/img/techonicks.jpeg"
 /* ═══════════════════════════════════════════════════════════
    ByteBurst — Prize & Collab Page
    DUNE Cinematic Theme · No Navbar · No Cursor
@@ -28,6 +28,23 @@ const COLLAB = {
   ],
   quote: "Rewards are not merely given. They are delivered with purpose, precision, and pride — to those who rise above the rest.",
   quoteAttr: "— CGEC Store Leadership, ByteBurst Chapter III",
+};
+
+const TECHCLUB = {
+  posterImg:   techonicks,  // ← replace
+  companyName: "Tech-O-Nicks",
+  tagline:     "Engineering the Future, One Build at a Time",
+  duneTitle:   "The Brotherhood of the Machine",
+  website:     "https://techonicks.vercel.app/",  // ← replace with actual URL if different
+  description: "Tech-O-Nicks is the official technical club of CGEC — a forge of innovation where builders, thinkers, and problem-solvers converge. For ByteBurst Chapter III, they stand as the architects of the arena itself, breathing life into every circuit of this saga. Their presence is not merely as organizers — they are the Makers, the ones who wield knowledge as a weapon and code as their creed.",
+  about: [
+    { label: "Established",  value: "CGEC, Cooch Behar" },
+    { label: "Domain",       value: "Technology · Development · Innovation" },
+    { label: "Presence",     value: "College-Wide · Inter-College" },
+    { label: "Mission",      value: "Empowering students through technology and collaboration" },
+  ],
+  quote: "We do not merely study technology. We shape it, wield it, and leave our mark upon it — for the club, the college, and the generations that follow.",
+  quoteAttr: "— Tech-O-Nicks, CGEC · ByteBurst Chapter III",
 };
 
 /* ─── PRIZES DATA ───────────────────────────────────────── */
@@ -296,8 +313,11 @@ function PrizeModal({ item, tierColor, onClose }) {
 export default function PrizePage({
   collab = COLLAB,
   prizes = PRIZES,
+  techClub = TECHCLUB,
 }) {
   const co = { ...COLLAB, ...collab };
+  const tc = { ...TECHCLUB, ...techClub };
+
   const [modal, setModal] = useState(null); // { item, tierColor }
 
   return (
@@ -318,6 +338,49 @@ export default function PrizePage({
         </p>
         <span className="pz-hero-attr pz-a3">— Muad'Dib's Address to the ByteBurst Champions</span>
       </section>
+
+            {/* ── Collab / Sponsor ── */}
+      <div className="pz-collab-wrap pz-a2">
+        <div className="pz-collab-inner">
+          {/* Poster */}
+          <div className="pz-collab-poster">
+            <img
+              src={tc.posterImg}
+              alt={tc.companyName}
+              className="pz-collab-img"
+              onError={e=>{ e.target.src="https://placehold.co/500x700/0E0C08/C8891A?text=Sponsor"; }}
+            />
+            <div className="pz-collab-poster-overlay"/>
+            <span className="pz-collab-poster-badge">Official Sponsor</span>
+          </div>
+
+          {/* Info */}
+          <div className="pz-collab-info">
+            <div className="pz-collab-wm">S</div>
+            <span className="pz-collab-eyebrow">⟁ &nbsp; Presented In Collaboration With &nbsp; ⟁</span>
+            <h2 className="pz-collab-name">{tc.companyName}</h2>
+            <p className="pz-collab-dune">{tc.duneTitle}</p>
+            <p className="pz-collab-tagline">"{tc.tagline}"</p>
+            <div className="pz-div"><div className="pz-div-line"/><div className="pz-div-gem"/></div>
+            <div className="pz-collab-about">
+              {tc.about.map((a, i) => (
+                <div key={i} className="pz-about-row">
+                  <span className="pz-about-key">{a.label}</span>
+                  <span className="pz-about-val">{a.value}</span>
+                </div>
+              ))}
+            </div>
+            <p className="pz-collab-desc">{tc.description}</p>
+            <blockquote className="pz-collab-quote">
+              "{tc.quote}"
+              <span>{tc.quoteAttr}</span>
+            </blockquote>
+            <a href={tc.website} className="pz-visit-btn" target="_blank" rel="noreferrer">
+              Visit the Guild &nbsp;→
+            </a>
+          </div>
+        </div>
+      </div>
 
       {/* ── Collab / Sponsor ── */}
       <div className="pz-collab-wrap pz-a2">
