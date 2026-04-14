@@ -11,6 +11,7 @@ import rupayan from "../img/rupyan.jpeg"
 import arif from "../img/arif.jpeg"
 import driti from "../img/Driti_R.jpeg"
 import sampreety from "../img/sampritee.jpeg"
+import sidhartha from "../img/sidhartha.jpeg"
 
 
 
@@ -246,16 +247,16 @@ export const MEMBERS = [
   },
   {
     id: 12,
-    name: "Rajorsi Sinharay",
-    role: "Techno Commercial Lead",
-    duneTitle: "ECE, Third Year",
-    img: rajorsi,
+    name: "Sidhartha Bag",
+    role: "Graphics Design Lead",
+    duneTitle: "CSE, Third Year",
+    img: sidhartha,
     quote: "I must not fear. Fear is the mind-killer. I face the pitch without flinching.",
     sigil: "⟟",
     socials: {
-      linkedin: "https://www.linkedin.com/in/rajorsisinharay",
+      linkedin: "https://www.linkedin.com/in/siddhartha-bag-a45a1929a",
       github: "",
-      instagram: "https://www.instagram.com/rajorshi_sr?igsh=ZnRndzZ3ZDZ4cXg5",
+      instagram: "https://www.instagram.com/siddh_art_ha_21?igsh=ZmQ5bDB1bXc0aXJy",
     },
   },
 
