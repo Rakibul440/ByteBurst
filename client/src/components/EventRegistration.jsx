@@ -275,7 +275,14 @@ const handleSubmit = async () => {
                 className="rg-submit"
                 onClick={()=>{navigate(`${navigatePath}`)}}
               >
-                View Problem Statements
+                View Problem Statements →
+              </button>)}
+
+              { buttonName &&  (<button
+                className="rg-submit"
+                onClick={() => window.open("https://hackathon-liard-eta.vercel.app/", "_blank")}
+              >
+                Submit Project →
               </button>)}
 
             </>
