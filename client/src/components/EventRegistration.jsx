@@ -280,7 +280,7 @@ const handleSubmit = async () => {
 
               { buttonName &&  (<button
                 className="rg-submit"
-                onClick={() => window.open("https://hackathon-liard-eta.vercel.app/", "_blank")}
+                onClick={() => window.open("https://hackathon.rakibulislammondal.in/", "_blank")}
               >
                 Submit Project →
               </button>)}
