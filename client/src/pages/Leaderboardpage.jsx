@@ -62,9 +62,9 @@ const EVENTS_DATA = [
     isTeamEvent: false,
     categoryColor: "#7ABAC8",
     winners: [
-      { rank: 1, name: "Subham Saha",   roll: "34900124005", dept: "CSE", year: "SECOND",  score: "5/5 solved · 1h 12m", achievement: "Solved all 5 problems with fastest time" },
-      { rank: 2, name: "Rajat Mondal", roll: "34900124018", dept: "CSE", year: "SECOND", score: "5/5 solved · 1h 38m", achievement: "Perfect score, second fastest" },
-      { rank: 3, name: "Archisman Biswas",    roll: "34900125063", dept: "CSE",  year: "FIRST", score: "4/5 solved · 1h 52m", achievement: "Highest partial score" },
+      { rank: 1, name: "Subham Saha",   roll: "34900124005", dept: "CSE", year: "SECOND",  score: "90/100", achievement: "Solved all 5 problems with fastest time" },
+      { rank: 2, name: "Rajat Mondal", roll: "34900124018", dept: "CSE", year: "SECOND", score: "85/100", achievement: "Perfect score, second fastest" },
+      { rank: 3, name: "Archisman Biswas",    roll: "34900125063", dept: "CSE",  year: "FIRST", score: "84/100", achievement: "Highest partial score" },
     ],
   },
     {
