@@ -194,19 +194,19 @@ const EVENTS_DATA = [
       },
       {
         rank: 2,
-        teamName: "Aakash",
+        teamName: "Indrakshi",
         achievement: "",
         score: "83 / 100",
         members: [
-          { name: "Aakash Singh",  roll: "22CS041", dept: "CSE", year: "SECOND", isLeader: true  },
+          { name: "Indrakshi Ghosh",  roll: "34901325015", dept: "CE", year: "FIRST", isLeader: true  },
         ],
       },
       {
         rank: 3,
-        teamName: "Harsh",
+        teamName: "Aniket",
         score: "78 / 100",
         members: [
-          { name: "Harsh Agarwal", roll: "22ME008", dept: "ME",  year: "SECOND", isLeader: true  },
+          { name: "Aniket Das", roll: "34901324029", dept: "CE",  year: "SECOND", isLeader: true  },
         ],
       },
     ],
