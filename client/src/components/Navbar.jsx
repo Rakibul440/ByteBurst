@@ -11,6 +11,7 @@ const DEFAULT_LINKS = [
   { label: "Organizer", href: "/organizers", duneLabel: "The Lords"   },
   { label: "Team",     href: "/team",     duneLabel: "The House"  },
   { label: "Prizes",     href: "/prizes",     duneLabel: "The Artifacts"  },
+  { label: "Winners",     href: "/hall-of-champions",     duneLabel: "The Champions"  },
 
 ];
 

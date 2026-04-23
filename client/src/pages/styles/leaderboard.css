@@ -1,0 +1,774 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap');
+
+.lb-root {
+    background: #070604;
+    color: #D4B896;
+    font-family: 'Cormorant Garamond', serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    padding-top: 72px;
+}
+
+@keyframes lb-rise {
+    from {
+        opacity: 0;
+        transform: translateY(28px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lb-fade {
+    from {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes lb-glow-pulse {
+
+    0%,
+    100% {
+        opacity: .5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* ════ HERO ════ */
+.lb-hero {
+    position: relative;
+    padding: 5rem 2rem 4rem;
+    text-align: center;
+    overflow: hidden;
+}
+
+.lb-hero-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse 70% 55% at 50% 0%, rgba(232, 192, 96, .12) 0%, transparent 62%),
+        radial-gradient(ellipse 40% 30% at 15% 60%, rgba(200, 137, 26, .06) 0%, transparent 50%),
+        radial-gradient(ellipse 40% 30% at 85% 55%, rgba(200, 137, 26, .05) 0%, transparent 50%),
+        radial-gradient(ellipse 100% 40% at 50% 110%, rgba(140, 80, 5, .08) 0%, transparent 55%);
+}
+
+.lb-hero-grain {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.022'/%3E%3C/svg%3E");
+}
+
+.lb-hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 8%;
+    right: 8%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #3D2E1A, transparent);
+}
+
+.lb-hero-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: .54rem;
+    letter-spacing: .38em;
+    text-transform: uppercase;
+    color: #B09070;
+    margin-bottom: 1rem;
+    display: block;
+    animation: lb-rise .9s .05s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+.lb-hero-title {
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    font-size: clamp(2.8rem, 9vw, 6.5rem);
+    line-height: .93;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    color: transparent;
+    background: linear-gradient(150deg, #FFF8D0 0%, #E8C060 20%, #C8891A 50%, #A06010 75%, #F0C840 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    filter: drop-shadow(0 0 50px rgba(232, 192, 96, .4));
+    animation: lb-rise .9s .15s cubic-bezier(.16, 1, .3, 1) both, lb-sheen 6s 2s linear infinite;
+}
+
+@keyframes lb-sheen {
+    0% {
+        background-position: 200% 0
+    }
+
+    100% {
+        background-position: -200% 0
+    }
+}
+
+.lb-hero-dune {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(.92rem, 2vw, 1.2rem);
+    letter-spacing: .15em;
+    color: #C8891A;
+    margin-top: .7rem;
+    margin-bottom: .4rem;
+    animation: lb-rise .9s .25s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+.lb-hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(.88rem, 1.7vw, 1.05rem);
+    letter-spacing: .1em;
+    color: #B09070;
+    margin-bottom: 2rem;
+    animation: lb-rise .9s .32s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+.lb-hero-orn {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    max-width: 280px;
+    margin: 0 auto 2rem;
+    animation: lb-rise .9s .38s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+.lb-orn-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #3D2E1A);
+}
+
+.lb-orn-line.r {
+    background: linear-gradient(to left, transparent, #3D2E1A);
+}
+
+.lb-orn-gem {
+    width: 7px;
+    height: 7px;
+    background: #C8891A;
+    transform: rotate(45deg);
+    box-shadow: 0 0 10px rgba(200, 137, 26, .45);
+    flex-shrink: 0;
+}
+
+.lb-hero-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    line-height: 1.7;
+    color: rgba(212, 184, 150, .65);
+    max-width: 580px;
+    margin: 0 auto .5rem;
+    animation: lb-rise .9s .44s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+.lb-hero-attr {
+    font-family: 'Cinzel', serif;
+    font-size: .5rem;
+    letter-spacing: .26em;
+    text-transform: uppercase;
+    color: #7A6548;
+    display: block;
+    animation: lb-rise .9s .5s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+/* ════ FILTER BAR ════ */
+.lb-filter-bar {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    justify-content: center;
+}
+
+.lb-filter-btn {
+    font-family: 'Cinzel', serif;
+    font-size: .46rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: #B09070;
+    background: transparent;
+    border: 1px solid #3D2E1A;
+    padding: .42rem 1.1rem;
+    cursor: pointer;
+    transition: color .3s, border-color .3s, background .3s;
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+}
+
+.lb-filter-btn:hover {
+    color: #C8891A;
+    border-color: rgba(200, 137, 26, .4);
+}
+
+.lb-filter-btn.active {
+    color: #070604;
+    background: #C8891A;
+    border-color: #C8891A;
+}
+
+.lb-filter-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: currentColor;
+    flex-shrink: 0;
+}
+
+/* ════ BODY ════ */
+.lb-body {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 3rem 2rem 6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+/* ════ EVENT SECTION ════ */
+.lb-event-section {}
+
+.lb-event-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.4rem;
+    border-bottom: 1px solid #3D2E1A;
+    position: relative;
+}
+
+.lb-event-header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(to right, var(--cat-c, #C8891A), transparent);
+}
+
+.lb-event-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: .5rem;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: #B09070;
+    margin-bottom: .4rem;
+    display: block;
+}
+
+.lb-event-name {
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    font-size: clamp(1.3rem, 3vw, 2rem);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #D4B896;
+    margin-bottom: .3rem;
+    transition: color .3s;
+}
+
+.lb-event-dune {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: .92rem;
+    color: #C8891A;
+    letter-spacing: .06em;
+}
+
+.lb-event-chip {
+    font-family: 'Cinzel', serif;
+    font-size: .44rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    padding: .3rem .85rem;
+    border: 1px solid var(--cat-c, #C8891A);
+    color: var(--cat-c, #C8891A);
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+    flex-shrink: 0;
+    background: rgba(0, 0, 0, .2);
+}
+
+/* ════ PODIUM ════ */
+.lb-podium {
+    display: grid;
+    grid-template-columns: 1fr 1.08fr 1fr;
+    gap: 1.2rem;
+    align-items: end;
+}
+
+/* ─── Winner Card ─── */
+.lb-winner-card {
+    position: relative;
+    overflow: hidden;
+    background: var(--wc-bg, #0E0C08);
+    border: 1px solid var(--wc-border, #3D2E1A);
+    transition: transform .4s cubic-bezier(.22, 1, .36, 1), box-shadow .4s;
+    cursor: default;
+}
+
+.lb-winner-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 50px rgba(0, 0, 0, .5), 0 0 0 1px var(--wc-border, #3D2E1A);
+}
+
+/* Rank-1 card is taller */
+.lb-winner-card.rank-1 {
+    box-shadow: 0 0 40px var(--wc-shadow, transparent);
+}
+
+/* Top accent line */
+.lb-winner-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--wc-color, #C8891A), transparent);
+}
+
+/* Watermark number */
+.lb-card-wm {
+    position: absolute;
+    bottom: -1.5rem;
+    right: 1rem;
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    font-size: 8rem;
+    line-height: 1;
+    color: rgba(61, 46, 26, .09);
+    pointer-events: none;
+    user-select: none;
+    transition: color .4s;
+}
+
+.lb-winner-card:hover .lb-card-wm {
+    color: rgba(200, 137, 26, .06);
+}
+
+/* Rank badge */
+.lb-rank-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    padding: 1rem 1.5rem .8rem;
+    border-bottom: 1px solid rgba(61, 46, 26, .4);
+    background: var(--wc-bg, #0A0804);
+}
+
+.lb-rank-sigil {
+    font-size: 1.1rem;
+    color: var(--wc-color, #C8891A);
+    animation: lb-glow-pulse 2.5s ease-in-out infinite;
+    filter: drop-shadow(0 0 6px var(--wc-glow, transparent));
+}
+
+.lb-rank-label-wrap {
+    text-align: center;
+}
+
+.lb-rank-num {
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    font-size: 1.6rem;
+    color: var(--wc-color, #C8891A);
+    line-height: 1;
+    display: block;
+    text-shadow: 0 0 20px var(--wc-glow, transparent);
+}
+
+.lb-rank-label {
+    font-family: 'Cinzel', serif;
+    font-size: .44rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--wc-color, #B09070);
+    display: block;
+    margin-top: .1rem;
+}
+
+.lb-rank-dune {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: .72rem;
+    color: rgba(212, 184, 150, .5);
+    display: block;
+}
+
+/* Card body */
+.lb-card-body {
+    padding: 1.4rem 1.6rem 1.6rem;
+}
+
+/* Team name / Solo name */
+.lb-winner-name {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: clamp(.8rem, 1.6vw, 1.05rem);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #D4B896;
+    margin-bottom: .25rem;
+    line-height: 1.2;
+    transition: color .3s;
+}
+
+.lb-winner-card:hover .lb-winner-name {
+    color: var(--wc-color, #E8A020);
+}
+
+/* Achievement / project */
+.lb-winner-ach {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: .88rem;
+    color: #B09070;
+    margin-bottom: .9rem;
+    line-height: 1.5;
+}
+
+/* Score chip */
+.lb-score-chip {
+    font-family: 'Cinzel', serif;
+    font-size: .46rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--wc-color, #C8891A);
+    border: 1px solid var(--wc-border, rgba(200, 137, 26, .3));
+    padding: .28rem .75rem;
+    display: inline-block;
+    margin-bottom: 1rem;
+    background: rgba(0, 0, 0, .2);
+}
+
+/* Separator */
+.lb-sep {
+    height: 1px;
+    background: linear-gradient(to right, #3D2E1A, transparent);
+    margin: .8rem 0 1rem;
+}
+
+/* Solo details */
+.lb-solo-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .35rem .8rem;
+}
+
+.lb-detail-row {
+    display: flex;
+    flex-direction: column;
+    gap: .1rem;
+}
+
+.lb-detail-key {
+    font-family: 'Cinzel', serif;
+    font-size: .4rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: #7A6548;
+}
+
+.lb-detail-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: .88rem;
+    color: #C8A870;
+    line-height: 1.3;
+}
+
+/* Team members list */
+.lb-members-list {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.lb-member-row {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    padding: .5rem .7rem;
+    background: rgba(7, 6, 4, .5);
+    border: 1px solid rgba(61, 46, 26, .25);
+    position: relative;
+    overflow: hidden;
+    transition: border-color .3s, background .3s;
+}
+
+.lb-member-row:hover {
+    border-color: rgba(200, 137, 26, .2);
+    background: rgba(200, 137, 26, .02);
+}
+
+.lb-member-leader-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.lb-member-name-col {
+    flex: 1;
+    min-width: 0;
+}
+
+.lb-member-name {
+    font-family: 'Cinzel', serif;
+    font-size: .54rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #D4B896;
+    display: block;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.lb-member-roll {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: .78rem;
+    color: #7A6548;
+    display: block;
+}
+
+.lb-member-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: .1rem;
+    flex-shrink: 0;
+}
+
+.lb-member-dept {
+    font-family: 'Cinzel', serif;
+    font-size: .4rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #B09070;
+}
+
+.lb-member-year {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: .72rem;
+    color: #7A6548;
+}
+
+.lb-leader-tag {
+    font-family: 'Cinzel', serif;
+    font-size: .38rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    padding: .15rem .5rem;
+    border: 1px solid;
+    color: var(--wc-color, #C8891A);
+    border-color: var(--wc-border, rgba(200, 137, 26, .35));
+    flex-shrink: 0;
+}
+
+/* Project link */
+.lb-project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    font-family: 'Cinzel', serif;
+    font-size: .44rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: #7A6548;
+    text-decoration: none;
+    margin-top: 1rem;
+    transition: color .3s;
+}
+
+.lb-project-link:hover {
+    color: var(--wc-color, #C8891A);
+}
+
+/* ════ QUOTE BAND ════ */
+.lb-qband {
+    padding: 3.5rem 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+}
+
+.lb-qband::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 8%;
+    right: 8%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #3D2E1A, transparent);
+}
+
+.lb-qb-sigil {
+    font-family: 'Cinzel', serif;
+    font-size: .65rem;
+    letter-spacing: .45em;
+    color: #3D2E1A;
+    margin-bottom: 1.4rem;
+    display: block;
+}
+
+.lb-qb-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.05rem, 2.4vw, 1.38rem);
+    line-height: 1.75;
+    color: rgba(212, 184, 150, .65);
+    margin-bottom: .7rem;
+    letter-spacing: .03em;
+}
+
+.lb-qb-attr {
+    font-family: 'Cinzel', serif;
+    font-size: .48rem;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    color: #7A6548;
+}
+
+/* ════ HALL OF CHAMPIONS CLOSING ════ */
+.lb-closing {
+    position: relative;
+    padding: 6rem 2rem 8rem;
+    text-align: center;
+    overflow: hidden;
+}
+
+.lb-closing::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 5%;
+    right: 5%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #3D2E1A, transparent);
+}
+
+.lb-closing-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 65% 60% at 50% 50%, rgba(232, 192, 96, .05) 0%, transparent 65%);
+    pointer-events: none;
+}
+
+.lb-closing-sigil {
+    font-family: 'Cinzel', serif;
+    font-size: .7rem;
+    letter-spacing: .5em;
+    color: #7A6548;
+    margin-bottom: 1.8rem;
+    display: block;
+}
+
+.lb-closing-title {
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #D4B896;
+    margin-bottom: .7rem;
+    line-height: 1.1;
+}
+
+.lb-closing-title span {
+    color: transparent;
+    background: linear-gradient(135deg, #F0D070, #E8C060, #C8891A);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.lb-closing-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(.95rem, 1.9vw, 1.15rem);
+    color: #B09070;
+    letter-spacing: .1em;
+    max-width: 540px;
+    margin: 0 auto 2.5rem;
+}
+
+.lb-closing-names {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .5rem;
+    margin-bottom: 2rem;
+}
+
+.lb-closing-name-chip {
+    font-family: 'Cinzel', serif;
+    font-size: .46rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: #C8891A;
+    border: 1px solid rgba(200, 137, 26, .25);
+    padding: .3rem .8rem;
+    background: rgba(200, 137, 26, .04);
+}
+
+/* ════ RESPONSIVE ════ */
+@media(max-width:900px) {
+    .lb-podium {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .lb-podium>.lb-winner-card.rank-1 {
+        grid-column: 1 / -1;
+    }
+}
+
+@media(max-width:580px) {
+    .lb-podium {
+        grid-template-columns: 1fr;
+    }
+
+    .lb-podium>.lb-winner-card.rank-1 {
+        grid-column: auto;
+    }
+
+    .lb-hero {
+        padding: 4rem 1.5rem 3rem;
+    }
+
+    .lb-body {
+        padding: 2.5rem 1.2rem 5rem;
+        gap: 3rem;
+    }
+
+    .lb-card-body {
+        padding: 1.2rem 1.2rem 1.4rem;
+    }
+}

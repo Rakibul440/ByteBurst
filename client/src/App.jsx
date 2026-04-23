@@ -29,6 +29,7 @@ import {useAuth} from "../hooks/useAuth"
 import ProtectedRoute from "./components/ProtectedRoute";
 import OTPVerifyPage from "./pages/OTPVerifyPage";
 import axios from "axios";
+import LeaderboardPage from "./pages/Leaderboardpage";
 
 export default function App() {
 
@@ -75,6 +76,7 @@ export default function App() {
         <Route path="/organizers" element={<OrganizersPage/>} />
         <Route path="/events" element={<EventsPage/>} />
         <Route path="/prizes" element={<PrizePage/>} />
+        <Route path="/hall-of-champions" element={<LeaderboardPage/>} />
         <Route path="/about" element={<AboutPage/>}  onRegister={() => navigate("/auth")} onExplore={()  => navigate("/events")}/>
         <Route path="/events/hackathon/problem-statements" element={<HackathonProblemStatement/>} onRegister={() => navigate("/events/hackathon")}  />
 
