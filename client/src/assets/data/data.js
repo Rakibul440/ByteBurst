@@ -262,7 +262,7 @@ export const MEMBERS = [
 
 ];
 
-/* ─── Events Data ────────────────────────────────────────── */
+
 export const EVENTS_DATA = [
   {
     id: "e1",
