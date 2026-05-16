@@ -113,6 +113,11 @@ export default function EventRegistrationPage({
     if (errors[name]) setErrors(er => ({ ...er, [name]: "" }));
   };
 
+
+const handleSubmit = ()=>{
+  toast.warning("Registration has been closed")
+}
+/*
 const handleSubmit = async () => {
   const errs = validate(form);
 
@@ -167,7 +172,7 @@ const handleSubmit = async () => {
     setLoading(false); 
   }
 };
-
+*/
   return (
     <div className="rg-root">
 
