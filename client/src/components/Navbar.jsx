@@ -12,6 +12,7 @@ const DEFAULT_LINKS = [
   { label: "Team",     href: "/team",     duneLabel: "The House"  },
   { label: "Prizes",     href: "/prizes",     duneLabel: "The Artifacts"  },
   { label: "Winners",     href: "/hall-of-champions",     duneLabel: "The Champions"  },
+  { label: "Certificate",     href: "/certificate",     duneLabel: "The Seal"  },
 
 ];
 
