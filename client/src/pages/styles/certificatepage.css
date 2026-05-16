@@ -1,0 +1,854 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=IM+Fell+English:ital@0;1&display=swap');
+
+/* ════ PAGE ════ */
+.ct-page {
+    background: #070604;
+    color: #D4B896;
+    font-family: 'Cormorant Garamond', serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    padding-top: 72px;
+}
+
+@keyframes ct-rise {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ════ HERO ════ */
+.ct-hero {
+    position: relative;
+    padding: 4.5rem 2rem 3.5rem;
+    text-align: center;
+    overflow: hidden;
+}
+
+.ct-hero-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse 65% 50% at 50% 0%, rgba(200, 137, 26, .11) 0%, transparent 60%),
+        radial-gradient(ellipse 100% 40% at 50% 110%, rgba(140, 80, 5, .08) 0%, transparent 55%);
+}
+
+.ct-hero-grain {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.022'/%3E%3C/svg%3E");
+}
+
+.ct-hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 8%;
+    right: 8%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #3D2E1A, transparent);
+}
+
+.ct-hero-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: .54rem;
+    letter-spacing: .38em;
+    text-transform: uppercase;
+    color: #B09070;
+    margin-bottom: .9rem;
+    display: block;
+    animation: ct-rise .9s .05s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+.ct-hero-title {
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    font-size: clamp(2.5rem, 8vw, 5.5rem);
+    line-height: .95;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    color: transparent;
+    background: linear-gradient(150deg, #FFF0A0 0%, #E8A020 22%, #C8891A 52%, #A06010 76%, #F0C840 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    filter: drop-shadow(0 0 44px rgba(200, 137, 26, .35));
+    animation: ct-rise .9s .15s cubic-bezier(.16, 1, .3, 1) both, ct-sheen 6s 2s linear infinite;
+}
+
+@keyframes ct-sheen {
+    0% {
+        background-position: 200% 0
+    }
+
+    100% {
+        background-position: -200% 0
+    }
+}
+
+.ct-hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(.88rem, 1.8vw, 1.1rem);
+    letter-spacing: .12em;
+    color: #B09070;
+    margin-top: .7rem;
+    margin-bottom: 1.5rem;
+    animation: ct-rise .9s .25s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+.ct-hero-orn {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    max-width: 260px;
+    margin: 0 auto;
+    animation: ct-rise .9s .32s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+.ct-orn-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #3D2E1A);
+}
+
+.ct-orn-line.r {
+    background: linear-gradient(to left, transparent, #3D2E1A);
+}
+
+.ct-orn-gem {
+    width: 7px;
+    height: 7px;
+    background: #C8891A;
+    transform: rotate(45deg);
+    box-shadow: 0 0 10px rgba(200, 137, 26, .45);
+    flex-shrink: 0;
+}
+
+/* ════ BODY ════ */
+.ct-body {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 3rem 2rem 6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+}
+
+/* ════ EVENT CERT BLOCK (wrapper per event) ════ */
+.ct-event-block {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    animation: ct-rise .8s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+.ct-event-label-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: .8rem;
+}
+
+.ct-event-label-left {
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+}
+
+.ct-event-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: .48rem;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: #B09070;
+    display: block;
+}
+
+.ct-event-name {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #D4B896;
+}
+
+.ct-event-dune {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: .88rem;
+    color: #C8891A;
+    letter-spacing: .06em;
+}
+
+.ct-dl-btn {
+    font-family: 'Cinzel', serif;
+    font-size: .52rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: #070604;
+    background: #C8891A;
+    border: 1px solid #C8891A;
+    padding: .65rem 1.6rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    transition: background .3s, box-shadow .3s;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.ct-dl-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, .1), transparent);
+    opacity: 0;
+    transition: opacity .3s;
+}
+
+.ct-dl-btn:hover {
+    background: #E8A020;
+    box-shadow: 0 0 28px rgba(200, 137, 26, .35);
+}
+
+.ct-dl-btn:hover::before {
+    opacity: 1;
+}
+
+.ct-dl-btn:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+}
+
+.ct-dl-icon {
+    font-size: .8rem;
+}
+
+/* ════════════════════════════════════════════════════════
+   THE CERTIFICATE ITSELF
+   A4 landscape: 297mm × 210mm → 842px × 595px at 96dpi
+   We render at 1.5× then scale down for screen
+════════════════════════════════════════════════════════ */
+.ct-cert-outer {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    /* 3:2 ish aspect (landscape A4) */
+    aspect-ratio: 842/595;
+    position: relative;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, .6), 0 0 0 1px rgba(200, 137, 26, .15);
+    transition: box-shadow .4s;
+    overflow: hidden;
+}
+
+.ct-cert-outer:hover {
+    box-shadow: 0 32px 100px rgba(0, 0, 0, .7), 0 0 0 1px rgba(200, 137, 26, .35), 0 0 40px rgba(200, 137, 26, .1);
+}
+
+/* ─── The actual printable cert div ─── */
+.ct-cert {
+    width: 100%;
+    height: 100%;
+    background: #FDFBF4;
+    position: relative;
+    overflow: hidden;
+    font-family: 'IM Fell English', 'Cormorant Garamond', Georgia, serif;
+    /* Force white background on print */
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+/* Outer border frame */
+.ct-cert-border-outer {
+    position: absolute;
+    inset: 14px;
+    border: 2px solid #8B6914;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.ct-cert-border-inner {
+    position: absolute;
+    inset: 20px;
+    border: 1px solid rgba(139, 105, 20, .5);
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Corner ornaments */
+.ct-cert-corner {
+    position: absolute;
+    z-index: 3;
+    width: 48px;
+    height: 48px;
+    pointer-events: none;
+}
+
+.ct-cert-corner svg {
+    width: 100%;
+    height: 100%;
+}
+
+.ct-cert-corner.tl {
+    top: 8px;
+    left: 8px;
+}
+
+.ct-cert-corner.tr {
+    top: 8px;
+    right: 8px;
+    transform: scaleX(-1);
+}
+
+.ct-cert-corner.bl {
+    bottom: 8px;
+    left: 8px;
+    transform: scaleY(-1);
+}
+
+.ct-cert-corner.br {
+    bottom: 8px;
+    right: 8px;
+    transform: scale(-1, -1);
+}
+
+/* Background watermark — image (replace src in CertificatePage props) */
+.ct-cert-wm {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 55%;
+    height: auto;
+    max-height: 55%;
+    object-fit: contain;
+    pointer-events: none;
+    z-index: 0;
+    opacity: .07;
+    filter: sepia(60%) saturate(0.4) brightness(0.6);
+    user-select: none;
+}
+
+/* Gold radial glow background */
+.ct-cert-glow {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 60%;
+    background: radial-gradient(ellipse, rgba(200, 137, 26, .06) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Content wrapper */
+.ct-cert-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4% 6%;
+}
+
+/* Institute header */
+.ct-cert-institute {
+    text-align: center;
+    margin-bottom: 2%;
+    width: 100%;
+}
+
+.ct-cert-inst-name {
+    font-family: 'Cinzel', Georgia, serif;
+    font-weight: 700;
+    font-size: clamp(.6rem, 1.4vw, .95rem);
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: #4A3800;
+    line-height: 1.2;
+    margin-bottom: .3%;
+}
+
+.ct-cert-inst-sub {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(.5rem, 1vw, .72rem);
+    letter-spacing: .1em;
+    color: #7A6020;
+    margin-bottom: .8%;
+}
+
+.ct-cert-inst-line {
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #8B6914, transparent);
+    margin: 0 auto;
+}
+
+.ct-cert-inst-line2 {
+    width: 70%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(139, 105, 20, .4), transparent);
+    margin: .3% auto 0;
+}
+
+/* CERTIFICATE OF PARTICIPATION heading */
+.ct-cert-heading-wrap {
+    text-align: center;
+    margin: 1.5% 0 .8%;
+}
+
+.ct-cert-of {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(.55rem, .9vw, .72rem);
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: #8B6914;
+    display: block;
+    margin-bottom: .3%;
+}
+
+.ct-cert-heading {
+    font-family: 'Cinzel', Georgia, serif;
+    font-weight: 900;
+    font-size: clamp(1rem, 2.2vw, 1.6rem);
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: #3A2800;
+    text-shadow: 0 1px 2px rgba(139, 105, 20, .2);
+    margin-bottom: .3%;
+}
+
+.ct-cert-heading-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    margin-top: .3%;
+}
+
+.ct-cert-hl {
+    width: 60px;
+    height: 1px;
+    background: #8B6914;
+}
+
+.ct-cert-hd {
+    width: 6px;
+    height: 6px;
+    background: #8B6914;
+    transform: rotate(45deg);
+}
+
+/* Presented to */
+.ct-cert-presented {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(.55rem, 1vw, .72rem);
+    letter-spacing: .15em;
+    color: #7A6020;
+    text-align: center;
+    margin: 1% 0 .4%;
+}
+
+/* PARTICIPANT NAME */
+.ct-cert-name {
+    font-family: 'IM Fell English', 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(1.2rem, 2.8vw, 2.1rem);
+    color: #2A1800;
+    text-align: center;
+    letter-spacing: .06em;
+    line-height: 1;
+    margin-bottom: .5%;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, .08);
+}
+
+.ct-cert-name-line {
+    width: 55%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #8B6914, transparent);
+    margin: .3% auto .8%;
+}
+
+/* Body text */
+.ct-cert-body-text {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(.5rem, .95vw, .7rem);
+    color: #4A3800;
+    text-align: center;
+    line-height: 1.7;
+    max-width: 82%;
+    margin-bottom: .6%;
+    letter-spacing: .04em;
+}
+
+.ct-cert-body-text strong {
+    font-weight: 600;
+    color: #2A1800;
+    font-style: normal;
+}
+
+/* Details row */
+.ct-cert-details {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .8rem;
+    flex-wrap: wrap;
+    margin: .6% 0;
+}
+
+.ct-cert-detail-chip {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: clamp(.38rem, .72vw, .56rem);
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: #6A5010;
+    border: 1px solid rgba(139, 105, 20, .4);
+    padding: .22rem .7rem;
+    background: rgba(139, 105, 20, .04);
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+}
+
+.ct-cert-detail-sep {
+    width: 4px;
+    height: 4px;
+    background: rgba(139, 105, 20, .3);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+}
+
+/* Event block on certificate */
+.ct-cert-event-block {
+    text-align: center;
+    margin: .5% 0 .8%;
+}
+
+.ct-cert-event-label {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: clamp(.38rem, .7vw, .54rem);
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: #8B6914;
+    display: block;
+    margin-bottom: .3%;
+}
+
+.ct-cert-event-name-cert {
+    font-family: 'Cinzel', Georgia, serif;
+    font-weight: 700;
+    font-size: clamp(.7rem, 1.5vw, 1.1rem);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #2A1800;
+    margin-bottom: .2%;
+}
+
+.ct-cert-event-dune-cert {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(.48rem, .85vw, .64rem);
+    color: #6A5010;
+    letter-spacing: .06em;
+}
+
+.ct-cert-event-team {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(.46rem, .8vw, .62rem);
+    color: #8B6914;
+    margin-top: .2%;
+}
+
+/* Cert ID */
+.ct-cert-id {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: clamp(.34rem, .6vw, .48rem);
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: rgba(139, 105, 20, .5);
+    margin: .5% 0 0;
+}
+
+/* Spacer */
+.ct-cert-spacer {
+    height: 10px;
+}
+
+/* ─── SIGNATORIES ROW ─── */
+.ct-cert-sigs {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 0;
+    width: 100%;
+    padding: 1% 4% 1.2%;
+    border-top: 1px solid rgba(139, 105, 20, .25);
+    align-self: end;
+}
+
+.ct-cert-sig-block {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .2%;
+    max-width: 28%;
+    position: relative;
+}
+
+.ct-cert-sig-block+.ct-cert-sig-block {
+    border-left: 1px solid rgba(139, 105, 20, .15);
+}
+
+.ct-cert-sig-img-wrap {
+    height: clamp(22px, 4.5vh, 42px);
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    margin-bottom: .5%;
+}
+
+.ct-cert-sig-img {
+    max-height: 100%;
+    max-width: 80%;
+    object-fit: contain;
+    object-position: center bottom;
+    filter: sepia(20%) contrast(1.1);
+}
+
+/* Placeholder when no image */
+.ct-cert-sig-placeholder {
+    width: 70%;
+    height: 100%;
+    border-bottom: 1px solid rgba(139, 105, 20, .4);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.ct-cert-sig-placeholder-text {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(.32rem, .6vw, .48rem);
+    color: rgba(139, 105, 20, .4);
+    letter-spacing: .1em;
+    padding-bottom: .15rem;
+}
+
+.ct-cert-sig-name {
+    font-family: 'Cinzel', Georgia, serif;
+    font-weight: 700;
+    font-size: clamp(.36rem, .65vw, .52rem);
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #2A1800;
+    text-align: center;
+    line-height: 1.3;
+}
+
+.ct-cert-sig-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(.3rem, .55vw, .44rem);
+    color: #6A5010;
+    text-align: center;
+    line-height: 1.4;
+    white-space: pre-line;
+}
+
+/* ─── Gold seal emblem (bottom right) ─── */
+.ct-cert-seal {
+    position: absolute;
+    bottom: 3%;
+    right: 4%;
+    width: clamp(44px, 7%, 66px);
+    height: clamp(44px, 7%, 66px);
+    z-index: 3;
+    pointer-events: none;
+    opacity: .65;
+}
+
+.ct-cert-seal-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid #8B6914;
+}
+
+.ct-cert-seal-ring2 {
+    position: absolute;
+    inset: 5px;
+    border-radius: 50%;
+    border: 1px solid rgba(139, 105, 20, .5);
+}
+
+.ct-cert-seal-text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cinzel', Georgia, serif;
+    font-weight: 900;
+    font-size: clamp(.28rem, .5vw, .4rem);
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: #8B6914;
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* ─── Category colour bar (top of cert) ─── */
+.ct-cert-cat-bar {
+    position: absolute;
+    top: 0;
+    left: 14px;
+    right: 14px;
+    height: 3px;
+    background: linear-gradient(to right, transparent, var(--cat-c, #C8891A), transparent);
+    z-index: 4;
+}
+
+/* ════ NO CERTS SCREEN ════ */
+.ct-no-certs {
+    text-align: center;
+    padding: 5rem 2rem;
+    animation: ct-rise .8s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+.ct-nc-sigil {
+    font-size: 2.5rem;
+    color: rgba(61, 46, 26, .5);
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.ct-nc-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #7A6548;
+    margin-bottom: .6rem;
+}
+
+.ct-nc-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: rgba(212, 184, 150, .5);
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+/* ════ QUOTE BAND ════ */
+.ct-qband {
+    padding: 3rem 2rem;
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+}
+
+.ct-qband::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 8%;
+    right: 8%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #3D2E1A, transparent);
+}
+
+.ct-qb-sigil {
+    font-family: 'Cinzel', serif;
+    font-size: .65rem;
+    letter-spacing: .45em;
+    color: #3D2E1A;
+    margin-bottom: 1.4rem;
+    display: block;
+}
+
+.ct-qb-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 2.3vw, 1.32rem);
+    line-height: 1.75;
+    color: rgba(212, 184, 150, .65);
+    margin-bottom: .7rem;
+    letter-spacing: .03em;
+}
+
+.ct-qb-attr {
+    font-family: 'Cinzel', serif;
+    font-size: .48rem;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    color: #7A6548;
+}
+
+/* ════ PRINT OVERRIDES ════ */
+@media print {
+
+    .ct-page,
+    .ct-body {
+        background: white !important;
+        padding: 0 !important;
+    }
+
+    .ct-hero,
+    .ct-event-label-bar,
+    .ct-qband,
+    .ct-dl-btn {
+        display: none !important;
+    }
+
+    .ct-cert-outer {
+        box-shadow: none !important;
+        max-width: 100% !important;
+        page-break-after: always;
+    }
+
+    .ct-cert {
+        background: #FDFBF4 !important;
+    }
+}
+
+/* ════ RESPONSIVE ════ */
+@media(max-width:640px) {
+    .ct-hero {
+        padding: 4rem 1.5rem 3rem;
+    }
+
+    .ct-body {
+        padding: 2.5rem 1.2rem 5rem;
+        gap: 3rem;
+    }
+
+    .ct-cert-sigs {
+        gap: 0;
+        padding: 0 2%;
+    }
+}

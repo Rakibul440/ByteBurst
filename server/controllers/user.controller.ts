@@ -154,3 +154,48 @@ export const getSingleProfile = async (req: Request, res: Response) => {
         res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ message: error.message });
     }
 };
+
+// get event registrations of a single profile
+export const getEventRegistrationsOfAUser = async (req: Request, res: Response) => {
+    try {
+        const userId = req.userId
+        if (!userId) {
+            return res.status(StatusCodes.UNAUTHORIZED).json({ message: "FAHH! Unauthorized" });
+        }
+
+        const user = await prisma.user.findUnique({
+            where: { id: userId },
+            select: {
+                name: true,
+                roll: true,
+                email: true,
+                dept: true,
+                year: true,
+
+                registrations: {
+                    select: {
+                        id: true,
+                        event: {
+                            select: {
+                                id: true,
+                                category: true,
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        if (!user) {
+            return res.status(StatusCodes.NOT_FOUND).json({ message: "User not found" });
+        }
+
+        return res.status(StatusCodes.OK).json({
+            user
+        });
+
+    } catch (error: any) {
+        console.log(error.code || error.message);
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ message: error.message });
+    }
+};

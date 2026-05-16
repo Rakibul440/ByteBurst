@@ -30,6 +30,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import OTPVerifyPage from "./pages/OTPVerifyPage";
 import axios from "axios";
 import LeaderboardPage from "./pages/Leaderboardpage";
+import CertificatePage from "./pages/Certificatepage";
 
 export default function App() {
 
@@ -71,6 +72,12 @@ export default function App() {
             <AdminPage/>
           </ProtectedRoute>
         } />
+
+        <Route path="/certificate"  element={
+          <ProtectedRoute>
+            <CertificatePage/>
+          </ProtectedRoute>
+        }/>
 
         <Route path="/team" element={<TeamPage/>} />
         <Route path="/organizers" element={<OrganizersPage/>} />
